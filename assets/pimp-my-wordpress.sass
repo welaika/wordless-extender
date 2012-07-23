@@ -1,0 +1,45 @@
+.description
+  ul
+    list-style:  disc inside
+q
+table#pimp-my-wordpress
+
+  col
+    &.status
+      width: 10%
+    &.name
+      width: 34%
+    &.version, &.install, &.upgrade, &.activate, &.deactivate, &.delete, &.details
+      width: 8%
+
+  thead, tfoot
+    font-weight: bold
+
+  tbody
+    tr
+
+      &:nth-child(2n)
+        background-color: #F4F4F4
+
+      &.not-installed
+        background-color: #FFEBE8
+        td.status
+          color: #965
+          font-weight: bold
+          text-shadow: white 0px 1px 0px
+      &.not-active
+        background-color: #FFD
+        td.status
+          color: #A84
+          font-weight: bold
+          text-shadow: white 0px 1px 0px
+      // &.active
+        // background-color: #DFD
+        // td.status
+        //   color: black
+
+      td
+        line-height: 1.5em
+        padding: 10px 0
+        padding-left: 10px
+        

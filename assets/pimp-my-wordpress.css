@@ -1,0 +1,29 @@
+.description ul {
+  list-style: disc inside; }
+
+table#pimp-my-wordpress col.status {
+  width: 10%; }
+table#pimp-my-wordpress col.name {
+  width: 34%; }
+table#pimp-my-wordpress col.version, table#pimp-my-wordpress col.install, table#pimp-my-wordpress col.upgrade, table#pimp-my-wordpress col.activate, table#pimp-my-wordpress col.deactivate, table#pimp-my-wordpress col.delete, table#pimp-my-wordpress col.details {
+  width: 8%; }
+table#pimp-my-wordpress thead, table#pimp-my-wordpress tfoot {
+  font-weight: bold; }
+table#pimp-my-wordpress tbody tr:nth-child(2n) {
+  background-color: #f4f4f4; }
+table#pimp-my-wordpress tbody tr.not-installed {
+  background-color: #ffebe8; }
+  table#pimp-my-wordpress tbody tr.not-installed td.status {
+    color: #996655;
+    font-weight: bold;
+    text-shadow: white 0px 1px 0px; }
+table#pimp-my-wordpress tbody tr.not-active {
+  background-color: #ffffdd; }
+  table#pimp-my-wordpress tbody tr.not-active td.status {
+    color: #aa8844;
+    font-weight: bold;
+    text-shadow: white 0px 1px 0px; }
+table#pimp-my-wordpress tbody tr td {
+  line-height: 1.5em;
+  padding: 10px 0;
+  padding-left: 10px; }

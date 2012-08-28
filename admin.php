@@ -99,6 +99,10 @@ function pmw_menu() {
         'plugins.php?action=delete-selected&amp;checked[]=' . $value['Path'] . $plugin_url_common,
         'bulk-plugins');
     }
+    
+    if ($plug['status'] == 'Not installed'){
+      $plug ['upgrade'] = '';
+    }
 
     $plug['details'] = PMW_SITE_URL . '/wp-admin/' .  'plugin-install.php?tab=plugin-information&amp;plugin=' . $value['Slug'] . '&amb;TB_iframe=true&amb;width=600&amb;height=550';
 

@@ -12,12 +12,13 @@
   Author URI: http://www.welaika.com
   */  
 
-define("PMW_SITE_URL", get_bloginfo('siteurl'));
+define("PMW_SITE_URL", get_bloginfo('url'));
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-$plugin_dir = ABSPATH . 'wp-content/plugins/pimp-my-wordpress/';
-$plugin_url = plugins_url('pimp-my-wordpress');
+$plugin_dir = dirname(__FILE__) ."/";
+$plugin_dirname = basename($plugin_dir);
+$plugin_url = plugins_url($plugin_dirname);
 
 require_once $plugin_dir . 'admin.php';
 require_once $plugin_dir . 'functions.php';

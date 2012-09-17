@@ -44,5 +44,5 @@ if (is_array($list_files)) {
 */
 $pmw_to_be_installed_plugins = array(
   'Wordless', 'Better WP Security', 'White Label CMS', 
-  array('Name' => 'InfiniteWP Client', 'Slug' => 'iwp-client'), 'Simple Fields', 'Options Framework'
+  array('Name' => 'InfiniteWP Client', 'Slug' => 'iwp-client'), 'Simple Fields', 'Options Framework', "Posts To Posts"
 );

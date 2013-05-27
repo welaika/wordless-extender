@@ -36,6 +36,15 @@ require_once $plugin_dir . 'functions.php';
     Please note: array keys are KEYS SENSITIVE!
 */
 $pmw_to_be_installed_plugins = array(
-  'Wordless', 'Better WP Security', 'White Label CMS', 
-  array('Name' => 'InfiniteWP Client', 'Slug' => 'iwp-client'), 'Simple Fields', 'Options Framework', "Posts To Posts"
+  'Wordless',
+  'users2Csv',
+  'White Label CMS', 
+  array('Name' => 'InfiniteWP Client', 'Slug' => 'iwp-client'), 
+  'Simple Fields', 
+  'Options Framework', 
+  'Posts To Posts',
+  'Debug Bar',
+  'Debug Bar Console',
+  'Debug Bar Extender',
+  'Formidable Forms',
 );

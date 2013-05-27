@@ -3,12 +3,11 @@
   Plugin Name: Pimp My WordPress
   Plugin URI: 
   Description: Pimp My WordPress is a starting point for every WordPress we 
-    develop. Performs some default security action and optimization and give a 
-    list of plugin we usually install on every installation, or we need to 
-    remember to install!
+    develop. Give a list of plugin we usually install on every installation, 
+    or we need to remember to install!
   
-  Author: Edoardo Tenani <edoardo.tenani@welaika.com>
-  Version: 0.1.0
+  Author: Edoardo Tenani, Filippo Gangi Dino, Welaika
+  Version: 0.2.0
   Author URI: http://www.welaika.com
   */  
 
@@ -22,12 +21,6 @@ $plugin_url = plugins_url($plugin_dirname);
 
 require_once $plugin_dir . 'admin.php';
 require_once $plugin_dir . 'functions.php';
-$list_files = glob($plugin_dir . 'hooks/*.php');
-if (is_array($list_files)) {
-  foreach ($list_files as $filename) {
-    require_once $filename;
-  }
-}
 
 # A list of plugin to be displayed and checked for installation
 /*

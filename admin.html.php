@@ -3,7 +3,7 @@
 
   <div class="description">
     <p>
-      Pimp My WordPress is a plugin developed by <a href='http://welaika.com'>weLaika</a> as a starting point for every WordPress we develop. Performs some default secutiry action and optimization and give a list of plugin we usually install on every installation, or we need to remember to install!
+      Pimp My WordPress is a plugin developed by <a href='http://welaika.com'>weLaika</a> as a starting point for every WordPress we develop. Give a list of plugin we usually install on every installation, or we need to remember to install!
     </p>
     <p>
       View <a href="<?php print $plugin_url; ?>/README.md">README</a> for more details.

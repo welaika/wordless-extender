@@ -5,16 +5,32 @@
  */
 function pmw_admin_actions() {  
   global $plugin_dir, $plugin_url;
+  
+  // check if Wordless is already active
+  if (is_plugin_active('wordless/wordless.php')){
 
-  add_menu_page(
-    'Pimp My WordPress',
-    'Pimp My WordPress',
-    'install_plugins',
-    $plugin_dir . 'pimp-my-wordpress.php',
-    'pmw_menu',
-    $plugin_url . '/assets/welaika.16x16.png');
+    add_submenu_page( 
+      'wordless', 
+      'Plugin Manager',
+      'Plugin Manager', 
+      'install_plugins', 
+      'plugin_manager', 
+      'pmw_menu' 
+    );
+  } elseif (!is_plugin_active('wordless/wordless.php')){
+     add_menu_page( 
+      'Wordless',
+      'Wordless',
+      'install_plugins',
+      $plugin_dir . 'wordless-extender.php',
+      'pmw_menu',
+      $plugin_url . '/images/welaika.16x16.png',
+      59
+    ); 
+  }  
 }  
-add_action('admin_menu', 'pmw_admin_actions');
+
+add_action('admin_menu', 'pmw_admin_actions', 10);
 
 function pmw_menu() {
   global $plugin_dir, $plugin_url;

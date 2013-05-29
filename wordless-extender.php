@@ -1,10 +1,8 @@
 <?php   
   /* 
-  Plugin Name: Pimp My WordPress
+  Plugin Name: Wordless Extender
   Plugin URI: 
-  Description: Pimp My WordPress is a starting point for every WordPress we 
-    develop. Give a list of plugin we usually install on every installation, 
-    or we need to remember to install!
+  Description: Wordless Extender is a starting point for every WordPress web developer. Give a list of plugin we usually install on every installation, or we need to remember to install!
   
   Author: Edoardo Tenani, Filippo Gangi Dino, Welaika
   Version: 0.2.0
@@ -15,6 +13,7 @@ define("PMW_SITE_URL", get_bloginfo('url'));
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
+global $plugin_dir, $plugin_url;
 $plugin_dir = dirname(__FILE__) ."/";
 $plugin_dirname = basename($plugin_dir);
 $plugin_url = plugins_url($plugin_dirname);

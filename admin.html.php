@@ -1,18 +1,16 @@
 <div class="wrap">
-  <h2>Pimp My WordPress</h2>
+  <div id="icon-themes" class="icon32"><br></div>
+  <h2>Plugin Manager</h2>
 
   <div class="description">
     <p>
-      Pimp My WordPress is a plugin developed by <a href='http://welaika.com'>weLaika</a> as a starting point for every WordPress we develop. Give a list of plugin we usually install on every installation, or we need to remember to install!
-    </p>
-    <p>
-      View <a href="<?php print $plugin_url; ?>/README.md">README</a> for more details.
+      Developed by <a href='http://dev.welaika.com'>weLaika</a>. View <a href="<?php print $plugin_url; ?>/README.md">README</a> for more details.
     </p>
   </div>
 
   <h3>Plugin list</h3>
 
-  <table id="pimp-my-wordpress" class="wp-list-table widefat">
+  <table id="wordless-extender" class="wp-list-table widefat">
     <colgroup>
       <col class="status" />
       <col class="name" />

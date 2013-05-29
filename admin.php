@@ -25,9 +25,6 @@ function pmw_menu() {
   wp_enqueue_script('thickbox', null, array('jquery'));
   wp_enqueue_style('thickbox.css', '/' . WPINC . '/js/thickbox/thickbox.css', null, '1.0');
   wp_enqueue_style('wp-admin.css', '/' . WPINC . '/css/wp-admin.css', null, '1.0');
-  
-  # add our css
-  wp_enqueue_style('pimp-my-wordpress.css', $plugin_url . '/assets/pimp-my-wordpress.css', null, '1.0');
 
   # get plugin which we'd like to install ( 'interesting' plugins )
   global $pmw_to_be_installed_plugins;

@@ -125,6 +125,6 @@ function wle_plugin_manager() {
   }
   // echo "<pre>", var_dump($plugin_data), "</pre>";
 
-  # include HTML template
-  include "admin.html.php";
+  // include HTML template
+  include "plugins.html.php";
 }

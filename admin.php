@@ -313,6 +313,10 @@ function wle_security() {
       }
     }
 
+    // empty xmlrpc.php
+    if (isset($_POST['xmlrpc'])){
+      file_put_contents($_POST['xmlrpc'], '');
+    }
     // store values in wp db
     foreach ($_POST as $name => $property){
       if (($name != 'submit') && ($name != 'plugins_and_themes')) update_option($name, $property);

@@ -19,7 +19,7 @@
     <tbody>
       <tr>
         <td>.htaccess</td>
-        <td>Make your .htaccess more solid.</td>
+        <td>Make your .htaccess more solid. A backup is stored in .htaccess_backup</td>
         <td>
           <?php 
             $true_htaccess = '';
@@ -33,7 +33,7 @@
       </tr>
       <tr>
         <td>Plugins and themes</td>
-        <td>Remove default WordPress plugins and themes.</td>
+        <td>Remove default WordPress plugins and themes. <span style="color:red">Warning: you can't undo this action!</span></td>
         <td>
           <?php 
           if (!file_exists(WP_CONTENT_DIR .'/themes/twentyten')) $tw10 = 'disabled';
@@ -51,6 +51,14 @@
           <input type="checkbox" name="plugins_and_themes[]" value="<?php echo WP_CONTENT_DIR .'/plugins/hello.php'; ?>" <?php echo $hello; ?>> Plugin: Hello Dolly
         </td>
       </tr>
+      <tr>
+        <td>XMLRPC</td>
+        <td>Empty xmlrpc.php file. <span style="color:red">Warning: you can't undo this action!</span></td>
+        <td>
+         <input type="checkbox" name="xmlrpc" value="<?php echo ABSPATH .'xmlrpc.php'; ?>"> Sure?
+        </td>
+      </tr>
+      <tr>
     </table>
     <p class="submit">
       <input type="submit" name="submit" id="submit" class="button-primary" value="Save security fixes">

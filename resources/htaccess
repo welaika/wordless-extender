@@ -86,6 +86,10 @@
     Order allow,deny
     Deny from all
   </files>
+  <files ~ "\.txt$">
+    Order allow,deny
+    Deny from all
+  </files>
 
   # Block the include-only files.
   RewriteEngine On

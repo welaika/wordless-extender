@@ -185,7 +185,7 @@ function wle_constants() {
     foreach ($_POST as $name => $property){
       if ($name != 'submit') update_option($name, $property);
     }
-    
+
     // array of not strings constant definitions
     $not_strings = array('DISALLOW_FILE_EDIT', 'EMPTY_TRASH_DAYS', 'WP_ALLOW_REPAIR', 'WP_POST_REVISIONS', 'DISABLE_WP_CRON', 'WP_CONTENT_DIR', 'WP_CONTENT_URL', 'UPLOADS', 'WP_PLUGIN_URL', 'WP_PLUGIN_DIR');
 
@@ -200,10 +200,14 @@ function wle_constants() {
     preg_match_all( '/\bdefine\b\s*\(\s*[\\\'"][^\\\'"]+[\\\'"]\s*,\s[^;]*;/im', $config_content, $matches );
 
 
-    $constants = array('WP_SITEURL', 'AUTH_KEY', 'SECURE_AUTH_KEY', 'LOGGED_IN_KEY', 'NONCE_KEY', 'AUTH_SALT', 'SECURE_AUTH_SALT', 'LOGGED_IN_SALT', 'NONCE_SALT', 'WPLANG', 'DISALLOW_FILE_EDIT', 'EMPTY_TRASH_DAYS', 'WP_ALLOW_REPAIR', 'WP_POST_REVISIONS', 'DISABLE_WP_CRON', 'FS_METHOD', 'WP_CONTENT_DIR');
+    $constants = array('WP_SITEURL', 'AUTH_KEY', 'SECURE_AUTH_KEY', 'LOGGED_IN_KEY', 'NONCE_KEY', 'AUTH_SALT', 'SECURE_AUTH_SALT', 'LOGGED_IN_SALT', 'NONCE_SALT', 'WP_LANG', 'DISALLOW_FILE_EDIT', 'EMPTY_TRASH_DAYS', 'WP_ALLOW_REPAIR', 'WP_POST_REVISIONS', 'DISABLE_WP_CRON', 'FS_METHOD', 'WP_CONTENT_DIR');
     foreach ($constants as $constant){
       $get_constants[$constant] = get_option($constant);
     }
+
+    // wplang fix
+    $get_constants['WPLANG'] = $get_constants['WP_LANG'];
+    unset($get_constants['WP_LANG']);
 
     if (isset($get_constants['WP_CONTENT_DIR'])){
       $get_constants['WP_CONTENT_URL'] = "WP_SITEURL .'/". $get_constants['WP_CONTENT_DIR'] ."'";
@@ -235,7 +239,6 @@ function wle_constants() {
       else $replacement = "define('". $key ."', '". $value ."' );";
       $config_content = preg_replace($pattern, $replacement, $config_content);
     }
-    
     /* 
      * add to the bottom the new constants
      */

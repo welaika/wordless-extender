@@ -85,7 +85,7 @@
       <tr>
         <td>WPLANG</td>
         <td>define the WPLANG. Here the WordPress languages: <a href="http://codex.wordpress.org/WordPress_in_Your_Language">http://codex.wordpress.org/WordPress_in_Your_Language</a></td>
-        <td><input type="text" name="WPLANG" value="<?php echo get_option('WPLANG'); ?>"></td>
+        <td><input type="text" name="WP_LANG" value="<?php echo get_option('WP_LANG'); ?>"></td>
       </tr>
       <tr>
         <td>DISALLOW_FILE_EDIT</td>

@@ -1,6 +1,6 @@
 <?php
 
-function _pmw_calculate_slug($plugin) {
+function _wle_calculate_slug($plugin) {
   if (strpos($plugin, '/'))
     $slug = dirname($plugin);
   else
@@ -14,7 +14,7 @@ function _we_preprocess_to_be_installed(&$we_to_be_installed_plugins) {
     if (!is_array($p)) {
       $p = array(
         "Name" => $p,
-        "Slug" => _pmw_calculate_slug($p)
+        "Slug" => _wle_calculate_slug($p)
       );
     }
   }
@@ -26,7 +26,7 @@ function _we_preprocess_to_be_installed(&$we_to_be_installed_plugins) {
 
 function _we_preprocess_current_plugins(&$plugins) {
   foreach ($plugins as $path => &$i) {
-    $i['Slug'] = _pmw_calculate_slug($path);
+    $i['Slug'] = _wle_calculate_slug($path);
     $i['Path'] = $path;
   }
   $plugins = array_values($plugins);

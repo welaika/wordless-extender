@@ -12,7 +12,7 @@
  *    the message is a status message, so use the yellow information message 
  *    style.
  */
-function pmw_show_message($message, $is_error = false) {
+function wle_show_message($message, $is_error = false) {
   $class = ($is_error) ? "error" : "updated fade";
 
   echo '<div id="message" class="' . $class . '"><p>' . $message . '</p></div>';

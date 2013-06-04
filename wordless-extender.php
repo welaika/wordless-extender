@@ -9,7 +9,7 @@
   Author URI: http://www.welaika.com
   */  
 
-define("PMW_SITE_URL", get_bloginfo('url'));
+define("wle_SITE_URL", get_bloginfo('url'));
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
@@ -34,7 +34,7 @@ require_once $plugin_dir . 'functions.php';
 
     Please note: array keys are KEYS SENSITIVE!
 */
-$pmw_to_be_installed_plugins = array(
+$wle_to_be_installed_plugins = array(
   'Wordless',
   'users2Csv',
   'White Label CMS', 

@@ -24,7 +24,7 @@ OTHER
 * [Debug Bar Extender](http://wordpress.org/plugins/debug-bar-extender/)
 * [Formidable Forms](http://wordpress.org/plugins/formidable/)
 
-## Constants manager
+## Constants Manager
 
 Manage WP constants (stored in your wp-config.php) directly in the WP backend.
 This function automatically rewrite wp-config file content and wp-content folder name making a backup.

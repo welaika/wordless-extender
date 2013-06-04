@@ -29,6 +29,16 @@ function wle_admin_actions() {
       'wle_constants' 
     );
 
+    // add submenu voice for security fixes
+    add_submenu_page( 
+      'wordless', 
+      'Security Fixes',
+      'Security Fixes', 
+      'install_plugins', 
+      'security_fixes', 
+      'wle_security' 
+    );
+
   } elseif (!is_plugin_active('wordless/wordless.php')){
 
     // add submenu voice for plugin manager
@@ -50,6 +60,16 @@ function wle_admin_actions() {
       'install_plugins', 
       'config_constants', 
       'wle_constants' 
+    );
+
+    // add submenu voice for security fixes
+    add_submenu_page( 
+      'wordless-extender', 
+      'Security Fixes',
+      'Security Fixes', 
+      'install_plugins', 
+      'security_fixes', 
+      'wle_security' 
     );
 
     // rename the first menu voice
@@ -261,4 +281,11 @@ function wle_constants() {
   }
   // include HTML template
   include "constants.html.php";
+}
+
+function wle_security() {
+
+  
+  // include HTML template
+  include "security.html.php";
 }

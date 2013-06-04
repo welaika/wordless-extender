@@ -7,5 +7,33 @@
     </p>
   </div>
 
-  <h3>Security Fixes</h3>
+    <form method="post">
+    <table id="wordless-extender" class="wp-list-table widefat">
+    <thead>
+      <tr>
+        <th class="action">Fix</th>
+        <th class="description">Description</th>
+        <th class="value">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>.htaccess</td>
+        <td>Make your .htaccess more solid.</td>
+        <td>
+          <?php 
+            $true_htaccess = '';
+            $false_htaccess = '';
+            if (get_option('htaccess_fix') == 'true') $true_htaccess = 'checked';
+            elseif (get_option('htaccess_fix') == 'false') $false_htaccess = 'checked';
+          ?>
+          <input type="radio" name="htaccess_fix" value="true" <?php echo $true_htaccess ?>> True 
+          <input type="radio" name="htaccess_fix" value="false" <?php echo $false_htaccess ?>> False
+        </td>
+      </tr>
+    </table>
+    <p class="submit">
+      <input type="submit" name="submit" id="submit" class="button-primary" value="Save security fixes">
+    </p>
+  </form>
 </div>

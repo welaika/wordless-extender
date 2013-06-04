@@ -1,10 +1,11 @@
 # Wordless Extender
 
 Wordless Extender is a starting point for every WordPress we develop at 
-[weLaika](http://welaika.com). Give a list of plugin we usually install 
-on every installation, or we need to remember to install!
+[weLaika](http://welaika.com).
 
-## Plugin list
+## Plugin Manager
+
+Give you a list of usually used plugins.
 
 WELAIKA PRODUCTS
 
@@ -22,3 +23,8 @@ OTHER
 * [Debug Bar Console](http://wordpress.org/plugins/debug-bar-console/)
 * [Debug Bar Extender](http://wordpress.org/plugins/debug-bar-extender/)
 * [Formidable Forms](http://wordpress.org/plugins/formidable/)
+
+## Constants manager
+
+Manage WP constants (stored in your wp-config.php) directly in the WP backend.
+This function automatically rewrite wp-config file content and wp-content folder name making a backup.

@@ -31,6 +31,26 @@
           <input type="radio" name="htaccess_fix" value="false" <?php echo $false_htaccess ?>> False
         </td>
       </tr>
+      <tr>
+        <td>Plugins and themes</td>
+        <td>Remove default WordPress plugins and themes.</td>
+        <td>
+          <?php 
+          if (!file_exists(WP_CONTENT_DIR .'/themes/twentyten')) $tw10 = 'disabled';
+          else $tw10 = '';
+          if (!file_exists(WP_CONTENT_DIR .'/themes/twentyeleven')) $tw11 = 'disabled';
+          else $tw11 = '';
+          if (!file_exists(WP_CONTENT_DIR .'/themes/twentytwelve')) $tw12 = 'disabled';
+          else $tw12 = '';
+          if (!file_exists(WP_CONTENT_DIR .'/plugins/hello.php')) $hello = 'disabled';
+          else $hello = '';
+          ?>
+          <input type="checkbox" name="plugins_and_themes[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentyten'; ?>" <?php echo $tw10; ?>> Theme: TwentyTen<br />
+          <input type="checkbox" name="plugins_and_themes[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentyeleven'; ?>" <?php echo $tw11; ?>> Theme: TwentyEleven<br />
+          <input type="checkbox" name="plugins_and_themes[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentytwelve'; ?>" <?php echo $tw12; ?>> Theme: TwentyTwelve<br />
+          <input type="checkbox" name="plugins_and_themes[]" value="<?php echo WP_CONTENT_DIR .'/plugins/hello.php'; ?>" <?php echo $hello; ?>> Plugin: Hello Dolly
+        </td>
+      </tr>
     </table>
     <p class="submit">
       <input type="submit" name="submit" id="submit" class="button-primary" value="Save security fixes">

@@ -274,8 +274,8 @@ function wle_constants() {
     }
 
     // results pop message
-    if ($result != false) echo '<div class="error"><p>Preferences saved!<p></div>';
-    else echo '<div class="error"><p>Error saving new settings in your wp-config file<p></div>';
+    if ($result != false) wle_show_message('Preferences saved!');
+    else wle_show_message('Error saving new settings in your wp-config file', true);
     
     
   }
@@ -306,12 +306,19 @@ function wle_security() {
       file_put_contents($htaccess_file_backup, $htaccess_content);
     } 
 
-    // store values in wp db
-    foreach ($_POST as $name => $property){
-      if ($name != 'submit') update_option($name, $property);
+    // remove default plugins and themes
+    if (isset($_POST['plugins_and_themes'])){
+      foreach ($_POST['plugins_and_themes'] as $value) {
+        deleteDirAndFile($value);
+      }
     }
 
-    echo '<div class="error"><p>Security fixes saved!<p></div>';
+    // store values in wp db
+    foreach ($_POST as $name => $property){
+      if (($name != 'submit') && ($name != 'plugins_and_themes')) update_option($name, $property);
+    }
+
+    wle_show_message('Security fixes saved!');
 
   }
   // include HTML template

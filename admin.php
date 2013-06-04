@@ -285,7 +285,28 @@ function wle_constants() {
 
 function wle_security() {
 
-  
+  if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    foreach ($_POST as $name => $property){
+      if ($name != 'submit') update_option($name, $property);
+    }
+
+    $htaccess_file = ABSPATH.'.htaccess';
+    $htaccess_file_backup = ABSPATH.'.htaccess_backup';
+    $htaccess_content = file_get_contents($htaccess_file);
+    $new_htaccess_file = plugin_dir_path(__FILE__) .'resources/htaccess';
+    $new_htaccess_content = file_get_contents($new_htaccess_file);
+
+    $pattern = '/#\sBEGIN\swordless-extender.*#\sEND\swordless-extender/s';
+    $updated_htaccess_content = preg_replace($pattern, ' ', $htaccess_content);
+
+    if (get_option('htaccess_fix') == 'true') $updated_htaccess_content = $new_htaccess_content ."\n". $updated_htaccess_content;
+    file_put_contents($htaccess_file, $updated_htaccess_content);
+    file_put_contents($htaccess_file_backup, $htaccess_content);
+
+    echo '<div class="error"><p>Security fixes saved!<p></div>';
+
+  }
   // include HTML template
   include "security.html.php";
 }

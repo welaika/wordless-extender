@@ -157,3 +157,108 @@ function wle_plugin_manager() {
   // include HTML template
   include "plugins.html.php";
 }
+
+function wle_constants() {
+  // if there's something in POST store it in DB and in wp-config.php
+  if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+    foreach ($_POST as $name => $property){
+      if ($name != 'submit') update_option($name, $property);
+    }
+    
+    // array of not strings constant definitions
+    $not_strings = array('DISALLOW_FILE_EDIT', 'EMPTY_TRASH_DAYS', 'WP_ALLOW_REPAIR', 'WP_POST_REVISIONS', 'DISABLE_WP_CRON', 'WP_CONTENT_DIR', 'WP_CONTENT_URL', 'UPLOADS', 'WP_PLUGIN_URL', 'WP_PLUGIN_DIR');
+
+    // Open wp-config
+    $config_file = ABSPATH.'wp-config.php';
+    $config_content = file_get_contents($config_file);
+    // create backup
+    $config_file_backup = ABSPATH.'wp-config-backup.php';
+    $config_content_backup = $config_content;
+
+    // search constants already stored in wp-config.php
+    preg_match_all( '/\bdefine\b\s*\(\s*[\\\'"][^\\\'"]+[\\\'"]\s*,\s[^;]*;/im', $config_content, $matches );
+
+
+    $constants = array('WP_SITEURL', 'AUTH_KEY', 'SECURE_AUTH_KEY', 'LOGGED_IN_KEY', 'NONCE_KEY', 'AUTH_SALT', 'SECURE_AUTH_SALT', 'LOGGED_IN_SALT', 'NONCE_SALT', 'WPLANG', 'DISALLOW_FILE_EDIT', 'EMPTY_TRASH_DAYS', 'WP_ALLOW_REPAIR', 'WP_POST_REVISIONS', 'DISABLE_WP_CRON', 'FS_METHOD', 'WP_CONTENT_DIR');
+    foreach ($constants as $constant){
+      $get_constants[$constant] = get_option($constant);
+    }
+
+    if (isset($get_constants['WP_CONTENT_DIR'])){
+      $get_constants['WP_CONTENT_URL'] = "WP_SITEURL .'/". $get_constants['WP_CONTENT_DIR'] ."'";
+      $get_constants['UPLOADS'] = "'". $get_constants['WP_CONTENT_DIR'] ."/plugins'";
+      $get_constants['WP_CONTENT_DIR'] = "ABSPATH .'/". $get_constants['WP_CONTENT_DIR'] ."'";
+      $get_constants['WP_PLUGIN_URL'] = "WP_CONTENT_URL .'/plugins'";
+      $get_constants['WP_PLUGIN_DIR'] = "WP_CONTENT_DIR .'/plugins'";
+    }
+    
+    
+    foreach ($matches[0] as &$match){
+      $match = "start>>>" . $match . "<<<end";
+      $match = str_replace('start>>>define(', '', $match);
+      $match = str_replace(');<<<end', '', $match);
+      $match = trim($match);
+      $orig_constant = explode(',', $match);
+      foreach ($orig_constant as &$value) {
+        $value = trim($value);
+        if($value[0] == "'") $value = substr($value, 1, -1);
+      }
+      $orig_constants[$orig_constant[0]] = $orig_constant[1];
+    }
+
+    // replace existing Constants in wp-config
+    $existing_values = array_intersect_key($get_constants, $orig_constants);
+    foreach ($existing_values as $key => $value) {
+      $pattern = '/\bdefine\b\s*\(\s*[\\\'"]\b'. $key .'\b[\\\'"]\s*,\s[^;]*;/i';
+      if (in_array($key, $not_strings)) $replacement = "define('". $key ."', ". $value ." );";
+      else $replacement = "define('". $key ."', '". $value ."' );";
+      $config_content = preg_replace($pattern, $replacement, $config_content);
+    }
+    
+    /* 
+     * add to the bottom the new constants
+     */
+
+    // remove already replaced constants from array
+    foreach ($get_constants as $key => $value) {
+      foreach ($existing_values as $key_compare => $value_compare) {
+        if ($key_compare == $key) unset($get_constants[$key]);
+      }
+    }
+    
+    // create new constants strings
+    foreach ($get_constants as $key => $value) {
+      if (in_array($key, $not_strings)) $new_constants[] = "define('". $key ."', ". $value ." );";
+      else $new_constants[] = "define('". $key ."', '". $value ."' );";
+    }
+
+    if (isset($new_constants)){
+      // merge new constants
+      $new_constants = implode("\n", $new_constants);
+      
+      // append new constants before require_once(ABSPATH . 'wp-settings.php')
+      $config_content = str_replace("require_once(ABSPATH . 'wp-settings.php');", $new_constants ."\nrequire_once(ABSPATH . 'wp-settings.php');", $config_content);
+    }
+
+    // Update wp-config.php
+    $result = file_put_contents($config_file, $config_content);
+    // Store backup
+    $result = file_put_contents($config_file_backup, $config_content_backup);
+    // Rename wp-content folder
+    if (isset($orig_constants["WP_CONTENT_URL"])){
+      preg_match_all( '/\/(.*)\b/im', $orig_constants["WP_CONTENT_URL"], $old_wpcontent );
+      rename(ABSPATH . $old_wpcontent[1][0], ABSPATH . $_POST["WP_CONTENT_DIR"]);
+    } else {
+      rename(ABSPATH .'wp-content', ABSPATH . $_POST["WP_CONTENT_DIR"]);
+    }
+
+    // results pop message
+    if ($result != false) echo '<div class="error"><p>Preferences saved!<p></div>';
+    else echo '<div class="error"><p>Error saving new settings in your wp-config file<p></div>';
+    
+    
+  }
+  // include HTML template
+  include "constants.html.php";
+}

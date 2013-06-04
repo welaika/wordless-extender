@@ -9,6 +9,7 @@ function wle_admin_actions() {
   // check if Wordless is already active
   if (is_plugin_active('wordless/wordless.php')){
 
+    // add submenu voice for plugin manager
     add_submenu_page( 
       'wordless', 
       'Plugin Manager',
@@ -17,8 +18,21 @@ function wle_admin_actions() {
       'plugin_manager', 
       'wle_plugin_manager' 
     );
+
+    // add submenu voice for constant config
+    add_submenu_page( 
+      'wordless', 
+      'Config Constants',
+      'Config Constants', 
+      'install_plugins', 
+      'config_constants', 
+      'wle_constants' 
+    );
+
   } elseif (!is_plugin_active('wordless/wordless.php')){
-     add_menu_page( 
+
+    // add submenu voice for plugin manager
+    add_menu_page( 
       'Wordless',
       'Wordless',
       'install_plugins',
@@ -27,7 +41,22 @@ function wle_admin_actions() {
       $plugin_url . '/images/welaika.16x16.png',
       59
     ); 
+
+    // add submenu voice for constant config
+    add_submenu_page( 
+      'wordless-extender', 
+      'Config Constants',
+      'Config Constants', 
+      'install_plugins', 
+      'config_constants', 
+      'wle_constants' 
+    );
+
+    // rename the first menu voice
+    global $submenu;
+    $submenu['wordless-extender'][0][0] = 'Plugin Manager';
   }  
+
 }  
 
 add_action('admin_menu', 'wle_admin_actions', 10);
@@ -118,7 +147,7 @@ function wle_plugin_manager() {
       $plug ['upgrade'] = '';
     }
 
-    $plug['details'] = PMW_SITE_URL . '/wp-admin/' .  'plugin-install.php?tab=plugin-information&amp;plugin=' . $value['Slug'] . '&amb;TB_iframe=true&amb;width=600&amb;height=550';
+    $plug['details'] = wle_SITE_URL . '/wp-admin/' .  'plugin-install.php?tab=plugin-information&amp;plugin=' . $value['Slug'] . '&amb;TB_iframe=true&amb;width=600&amb;height=550';
 
     // echo "<pre>", var_dump($plug), "</pre>";
     $plugin_data[] = $plug;

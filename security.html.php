@@ -59,6 +59,12 @@
         </td>
       </tr>
       <tr>
+        <td>README</td>
+        <td>Empty readme.html file. <span style="color:red">Warning: you can't undo this action!</span></td>
+        <td>
+         <input type="checkbox" name="readme" value="<?php echo ABSPATH .'readme.html'; ?>"> Sure?
+        </td>
+      </tr>
     </table>
     <p class="submit">
       <input type="submit" name="submit" id="submit" class="button-primary" value="Save security fixes">

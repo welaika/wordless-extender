@@ -317,9 +317,17 @@ function wle_security() {
     if (isset($_POST['xmlrpc'])){
       file_put_contents($_POST['xmlrpc'], '');
     }
+
+    // empty readme.html
+    if (isset($_POST['readme'])){
+      file_put_contents($_POST['readme'], '');
+    }
+
     // store values in wp db
     foreach ($_POST as $name => $property){
-      if (($name != 'submit') && ($name != 'plugins_and_themes')) update_option($name, $property);
+      if (($name != 'submit') && ($name != 'plugins_and_themes') && ($name != 'xmlrpc') && ($name != 'readme')){
+        update_option($name, $property);
+      }
     }
 
     wle_show_message('Security fixes saved!');

@@ -27,8 +27,8 @@
             if (get_option('htaccess_fix') == 'true') $true_htaccess = 'checked';
             elseif (get_option('htaccess_fix') == 'false') $false_htaccess = 'checked';
           ?>
-          <input type="radio" name="htaccess_fix" value="true" <?php echo $true_htaccess ?>> True 
           <input type="radio" name="htaccess_fix" value="false" <?php echo $false_htaccess ?>> False
+          <input type="radio" name="htaccess_fix" value="true" <?php echo $true_htaccess ?>> True 
         </td>
       </tr>
       <tr>
@@ -63,6 +63,27 @@
         <td>Empty readme.html file. <span style="color:red">Warning: you can't undo this action!</span></td>
         <td>
          <input type="checkbox" name="readme" value="<?php echo ABSPATH .'readme.html'; ?>"> Sure?
+        </td>
+      </tr>
+      <tr>
+        <td>DEBUG</td>
+        <td>Enable or disable WP_DEBUG. <strong>If "All" option is selected enable all error reporting 
+          <br />and write a log file (error.log), if "All with GET" option is selected it works <span style="color:red">everytime</span> you pass via GET <span style="color:red">?debug=debug</span>.</strong><br />Will be created a backup file in wp-config-backup.php</td>
+        <td>
+          <?php 
+            $false_debug = '';
+            $true_debug = '';
+            $all_debug = '';
+            $custom_debug = '';
+            if (get_option('debug') == 'false') $false_debug = 'checked';
+            elseif (get_option('debug') == 'true') $true_debug = 'checked';
+            elseif (get_option('debug') == 'all') $all_debug = 'checked';
+            elseif (get_option('debug') == 'custom') $custom_debug = 'checked';
+          ?>
+          <input type="radio" name="debug" value="false" <?php echo $false_debug; ?>> False
+          <input type="radio" name="debug" value="true" <?php echo $true_debug; ?>> True<br />
+          <input type="radio" name="debug" value="all" <?php echo $all_debug; ?>> All
+          <input type="radio" name="debug" value="custom" <?php echo $custom_debug; ?>> All with GET 
         </td>
       </tr>
     </table>

@@ -325,7 +325,7 @@ function wle_security() {
       file_put_contents($_POST['readme'], '');
     }
 
-
+    // set WP_DEBUG
     if (isset($_POST['debug'])){
       // Open wp-config
       $config_file = ABSPATH.'wp-config.php';
@@ -380,6 +380,30 @@ function wle_security() {
   }
   // include HTML template
   include "security.html.php";
+}
+
+/*
+ * Remove Wordpress meta info from header and feeds
+ */
+if (get_option('rmmetas') == 'true'){
+  //Remove generator name and version from your Website pages and from the RSS feed.
+  add_filter('the_generator', create_function('', 'return "";'));
+  //Display the XHTML generator that is generated on the wp_head hook, WP version
+  remove_action( 'wp_head', 'wp_generator' ); 
+  //Remove the link to the Windows Live Writer manifest file.
+  remove_action('wp_head', 'wlwmanifest_link'); 
+  //Remove EditURI
+  remove_action('wp_head', 'rsd_link');
+  //Remove index link.
+  remove_action('wp_head', 'index_rel_link');
+  //Remove previous link.
+  remove_action('wp_head', 'parent_post_rel_link', 10, 0);      
+  //Remove start link.
+  remove_action('wp_head', 'start_post_rel_link', 10, 0);
+  //Remove relational links (previous and next) for the posts adjacent to the current post.
+  remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+  //Remove shortlink if it is defined.
+  remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 }
 
 // hooks

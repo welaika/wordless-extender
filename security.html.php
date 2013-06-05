@@ -86,6 +86,20 @@
           <input type="radio" name="debug" value="custom" <?php echo $custom_debug; ?>> All with GET 
         </td>
       </tr>
+      <tr>
+        <td>Meta infos</td>
+        <td>Remove Wordpress meta info from header and feeds.</td>
+        <td>
+          <?php 
+            $true_rmmetas = '';
+            $false_rmmetas = '';
+            if (get_option('rmmetas') == 'true') $true_rmmetas = 'checked';
+            elseif (get_option('rmmetas') == 'false') $false_rmmetas = 'checked';
+          ?>
+          <input type="radio" name="rmmetas" value="false" <?php echo $false_rmmetas ?>> False
+          <input type="radio" name="rmmetas" value="true" <?php echo $true_rmmetas ?>> True 
+        </td>
+      </tr>
     </table>
     <p class="submit">
       <input type="submit" name="submit" id="submit" class="button-primary" value="Save security fixes">

@@ -317,7 +317,7 @@ function wle_security() {
 
     // empty xmlrpc.php
     if (isset($_POST['xmlrpc'])){
-      file_put_contents($_POST['xmlrpc'], '');
+      unlink(ABSPATH .'xmlrpc.php');
     }
 
     // empty readme.html

@@ -53,7 +53,7 @@
       </tr>
       <tr>
         <td>XMLRPC</td>
-        <td>Empty xmlrpc.php file. <span style="color:red">Warning: you can't undo this action!</span></td>
+        <td>Remove xmlrpc.php file. <span style="color:red">Warning: you can't undo this action!</span></td>
         <td>
          <input type="checkbox" name="xmlrpc" value="<?php echo ABSPATH .'xmlrpc.php'; ?>"> Sure?
         </td>

@@ -100,6 +100,20 @@
           <input type="radio" name="rmmetas" value="true" <?php echo $true_rmmetas ?>> True 
         </td>
       </tr>
+      <tr>
+        <td>Scripts version</td>
+        <td>Remove scripts version (js & css).</td>
+        <td>
+          <?php 
+            $true_rmscriptver = '';
+            $false_rmscriptver = '';
+            if (get_option('rmscriptver') == 'true') $true_rmscriptver = 'checked';
+            elseif (get_option('rmscriptver') == 'false') $false_rmscriptver = 'checked';
+          ?>
+          <input type="radio" name="rmscriptver" value="false" <?php echo $false_rmscriptver ?>> False
+          <input type="radio" name="rmscriptver" value="true" <?php echo $true_rmscriptver ?>> True 
+        </td>
+      </tr>
     </table>
     <p class="submit">
       <input type="submit" name="submit" id="submit" class="button-primary" value="Save security fixes">

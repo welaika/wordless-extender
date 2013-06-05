@@ -406,5 +406,13 @@ if (get_option('rmmetas') == 'true'){
   remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 }
 
+/**
+ * Remove scripts version (js & css)
+ */
+if (get_option('rmscriptver') == 'true'){
+  add_filter( 'style_loader_src', 'remove_ver_scripts', 102, 4 );
+  add_filter( 'script_loader_src', 'remove_ver_scripts', 102, 4 ); 
+}
+
 // hooks
 add_action('admin_menu', 'wle_admin_actions', 10);

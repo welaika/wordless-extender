@@ -37,3 +37,12 @@ function deleteDirAndFile($dirPath){
     unlink($dirPath);
   }
 }
+
+/**
+ * Remove scripts version (js & css)
+ */
+function remove_ver_scripts($src){
+  if ( strpos( $src, 'ver=' ) )
+    $src = remove_query_arg( 'ver', $src );
+  return $src;
+}

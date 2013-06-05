@@ -114,6 +114,20 @@
           <input type="radio" name="rmscriptver" value="true" <?php echo $true_rmscriptver ?>> True 
         </td>
       </tr>
+      <tr>
+        <td>Block wp-login</td>
+        <td>Block direct access to wp-login. <span style="color: red"><strong>You must pass via GET ?access=allow</strong></span></td>
+        <td>
+          <?php 
+            $true_blocklogin = '';
+            $false_blocklogin = '';
+            if (get_option('blocklogin') == 'true') $true_blocklogin = 'checked';
+            elseif (get_option('blocklogin') == 'false') $false_blocklogin = 'checked';
+          ?>
+          <input type="radio" name="blocklogin" value="false" <?php echo $false_blocklogin ?>> False
+          <input type="radio" name="blocklogin" value="true" <?php echo $true_blocklogin ?>> True 
+        </td>
+      </tr>
     </table>
     <p class="submit">
       <input type="submit" name="submit" id="submit" class="button-primary" value="Save security fixes">

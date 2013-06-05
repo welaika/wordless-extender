@@ -414,5 +414,15 @@ if (get_option('rmscriptver') == 'true'){
   add_filter( 'script_loader_src', 'remove_ver_scripts', 102, 4 ); 
 }
 
+/*
+ * Block direct access to wp-login
+ */
+if (get_option('blocklogin') == 'true'){
+  add_action('login_head', 'block');
+  add_filter('logout_url', 'add_key_to_url', 101, 2);
+  add_filter('lostpassword_url', 'add_key_to_url', 101, 2);  
+  add_filter('register', 'add_key_to_url', 101, 2);
+}
+
 // hooks
 add_action('admin_menu', 'wle_admin_actions', 10);

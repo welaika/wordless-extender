@@ -1,11 +1,10 @@
 <?php   
   /* 
   Plugin Name: Wordless Extender
-  Plugin URI: 
+  Plugin URI: https://github.com/welaika/wordless-extender
   Description: Wordless Extender is a starting point for every WordPress web developer. Give a list of plugin we usually install on every installation, or we need to remember to install!
-  
-  Author: Edoardo Tenani, Filippo Gangi Dino, Welaika
-  Version: 0.2.0
+  Author: Welaika
+  Version: 0.3
   Author URI: http://www.welaika.com
   */  
 
@@ -46,4 +45,5 @@ $wle_to_be_installed_plugins = array(
   'Debug Bar Console',
   'Debug Bar Extender',
   'Formidable Forms',
+  'Limit Login Attempts'
 );

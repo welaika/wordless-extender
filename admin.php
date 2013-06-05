@@ -79,7 +79,6 @@ function wle_admin_actions() {
 
 }  
 
-add_action('admin_menu', 'wle_admin_actions', 10);
 
 // Plugin Manager
 function wle_plugin_manager() {
@@ -382,3 +381,6 @@ function wle_security() {
   // include HTML template
   include "security.html.php";
 }
+
+// hooks
+add_action('admin_menu', 'wle_admin_actions', 10);

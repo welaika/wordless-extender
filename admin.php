@@ -210,7 +210,7 @@ function wle_constants() {
 
     if (isset($get_constants['WP_CONTENT_DIR'])){
       $get_constants['WP_CONTENT_URL'] = "WP_SITEURL .'/". $get_constants['WP_CONTENT_DIR'] ."'";
-      $get_constants['UPLOADS'] = "'". $get_constants['WP_CONTENT_DIR'] ."/plugins'";
+      $get_constants['UPLOADS'] = "'". $get_constants['WP_CONTENT_DIR'] ."/uploads'";
       $get_constants['WP_CONTENT_DIR'] = "ABSPATH .'/". $get_constants['WP_CONTENT_DIR'] ."'";
       $get_constants['WP_PLUGIN_URL'] = "WP_CONTENT_URL .'/plugins'";
       $get_constants['WP_PLUGIN_DIR'] = "WP_CONTENT_DIR .'/plugins'";

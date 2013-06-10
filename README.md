@@ -5,14 +5,8 @@ and used in the real work life by yours at weLaika.
 
 As we wrote in the Wordless README:
 
-«
-===
-
-_Wordless is not meant to be a bloated, all-included tool. This is why we recommend
-adding some other plugins to get the most out of your beautiful WP developer life_
-
-»
-===
+    « Wordless is not meant to be a bloated, all-included tool. This is why we recommend adding some other plugins to get 
+    the most out of your beautiful WP developer life »
 
 *Wordless Extender* (WlE from now on) is a starting point for every Wordlress theme
 we develop at [weLaika](http://dev.welaika.com).

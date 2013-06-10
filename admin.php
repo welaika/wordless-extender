@@ -3,11 +3,26 @@
 /*
   Administration page
  */
+
+function wle_is_wordless_menu_present(){
+  if (is_plugin_active('wordless/wordless.php')){
+    $wordless_data = get_plugin_data(WP_PLUGIN_DIR . '/wordless/wordless.php');
+    $wordless_version = (float) $wordless_data['Version'];
+
+    return $wordless_version > 0.3 ? true : false;
+
+  }
+}
+
 function wle_admin_actions() {  
   global $plugin_dir, $plugin_url;
   
   // check if Wordless is already active
-  if (is_plugin_active('wordless/wordless.php')){
+  if (is_plugin_active('wordless/wordless.php') && wle_is_wordless_menu_present()){
+
+    $wordless_data = get_plugin_data(WP_PLUGIN_DIR . '/wordless/wordless.php')
+    $wordless_version = (float) $wordless_data['Version'];
+    var_dump($wordless_version);
 
     // add submenu voice for plugin manager
     add_submenu_page( 
@@ -39,7 +54,7 @@ function wle_admin_actions() {
       'wle_security' 
     );
 
-  } elseif (!is_plugin_active('wordless/wordless.php')){
+  } else {
 
     // add submenu voice for plugin manager
     add_menu_page( 

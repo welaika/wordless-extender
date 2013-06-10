@@ -24,7 +24,16 @@
     <p>
       Developed by <a href='http://dev.welaika.com'>weLaika</a>.
     </p>
+    <p>
+      You WordPress wp-config.php has a bounch of constants that you absolutely don't want to forget! <br />
+      Someone are security related, others a utility. You can discover and manage them directly within this panel.
+
+      At every update of the configuration, a wp-config-backup.php with previous config version will be created as your personal parachute.
+
+      Use the power with care! ;)
+    </p>
   </div>
+
 
   <h3>Constants list</h3>
   <form method="post">

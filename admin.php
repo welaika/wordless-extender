@@ -20,7 +20,7 @@ function wle_admin_actions() {
   // check if Wordless is already active
   if (is_plugin_active('wordless/wordless.php') && wle_is_wordless_menu_present()){
 
-    $wordless_data = get_plugin_data(WP_PLUGIN_DIR . '/wordless/wordless.php')
+    $wordless_data = get_plugin_data(WP_PLUGIN_DIR . '/wordless/wordless.php');
     $wordless_version = (float) $wordless_data['Version'];
     var_dump($wordless_version);
 

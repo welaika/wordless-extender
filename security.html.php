@@ -5,6 +5,12 @@
     <p>
       Developed by <a href='http://dev.welaika.com'>weLaika</a>.
     </p>
+    <p>
+      This is a collection of security tricks, fast applying within this control panel. These are taken from
+      <a href="http://codex.wordpress.org/Hardening_WordPress">Hardening Wordpress</a> and a bit around our ì
+      WP dev experience.
+      Please, pay attention to the <span style="color:red">warnings</span>
+    </p>
   </div>
 
     <form method="post">

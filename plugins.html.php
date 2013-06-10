@@ -6,24 +6,24 @@
     <p>
       Developed by <a href='http://dev.welaika.com'>weLaika</a>. View <a href="<?php print $plugin_url; ?>/README.md">README</a> for more details.
     </p>
+    <p>
+      WordPress' plugins community contribuited are an essential part of WP itself. You probably wont reinvent the wheel
+      every time you'll build a new project, but will be convenient for you and your clients to use some of them...if they are
+      good enaugh! We consider plugins as good ones if they
+    </p>
+      <ul>
+        <li>* are tested</li>
+        <li>* are actively contribuited</li>
+        <li>* are doing well a single task</li>
+        <li>* have readable code</li>
+      </ul>
+    <p>
+      A list of tested-by-welaika plugins follow, to quickly kickstart your project with a dedicated control panel.
+    </p>
   </div>
 
   <h3>Plugin list</h3>
 
-  <p>
-    WordPress' plugins community contribuited are an essential part of WP itself. You probably wont reinvent the wheel
-    every time you'll build a new project, but will be convenient for you and your clients to use some of them...if they are
-    good enaugh! We consider plugins as good ones if they
-  </p>
-    <ul>
-      <li>* are tested</li>
-      <li>* are actively contribuited</li>
-      <li>* are doing well a single task</li>
-      <li>* have readable code</li>
-    </ul>
-  <p>
-    A list of tested-by-welaika plugins follow, to quickly kickstart your project with a dedicated control panel.
-  </p>
 
   <table id="wordless-extender" class="wp-list-table widefat">
     <colgroup>

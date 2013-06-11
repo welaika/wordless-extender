@@ -1,5 +1,7 @@
 # Wordless Extender
 
+![logo](http://welaika.github.com/wordless/assets/images/wordless-extender.png)
+
 [Wordless](https://github.com/welaika/wordless) is the WP themes framework developed
 and used in the real work life by yours at weLaika.
 

@@ -1,0 +1,171 @@
+@import "compass"
+
+=rotate_plus($deg)
+  +rotate(#{$deg}deg)
+  -webkit-backface-visibility: hidden
+
++global-reset
+
+$grayish: #5D5D5D
+$lime: #C2E553
+$light-blue: #4DBCE9
+$blue: #367bbb
+
+body
+  background: image-url("fancy_deboss.png")
+  font-family: Actor, Helvetica, Arial, sans-serif
+  color: $grayish
+  font-size: 20px
+  line-height: 21px
+
+  code
+    font-family: "Monaco", "Lucida Console", monospace
+    background: white
+    border: 1px solid #999
+    padding: 2px 4px
+    font-size: 15px
+    +border-radius(3px)
+
+  .github_badge
+    position: absolute
+    right: 0
+    top: 0
+    z-index: 1
+
+  .page-wrapper
+    width: image-width("wordless_new.png") * (1.61 + 1) + 60px + 20px * 2
+    padding: 90px 20px 110px
+    margin: 0 auto
+    position: relative
+    +clearfix
+
+    section.header, section.footer
+      position: absolute
+      height: 100px
+      top: -50px
+      left: -10%
+      width: 120%
+      background: #26ADE4
+      +rotate_plus(2)
+
+      p
+        width: image-width("wordless_new.png") * (1.61 + 1) + 60px
+        margin: 0px auto
+        line-height: 30px
+        text-align: right
+        padding-top: 50px
+
+        a
+          width: image-width("welaika.png")
+          height: image-height("welaika.png")
+          display: inline-block
+          text-indent: -1000em
+          letter-spacing: -1000em
+          overflow: hidden
+          background: image-url("welaika.png") no-repeat
+
+    section.footer
+      color: white
+      top: auto
+      bottom: -20px
+
+      p
+        padding-top: 20px
+        text-align: left
+
+    section.sidebar
+      width: image-width("wordless.png")
+      margin-right: 60px
+      float: left
+
+      h1
+        width: 100%
+        text-indent: -1000em
+        background: image-url("wordless_new.png") no-repeat
+        margin-bottom: 40px
+        height: 145px
+
+      nav
+        text-align: center
+
+        ul li
+          h4
+            font-size: 30px
+            line-height: 30px
+            margin-bottom: 15px
+            font-family: Coustard
+            color: $light-blue
+
+          a
+            display: block
+            margin-bottom: 15px
+            color: $blue
+            text-decoration: none
+
+            &:hover
+              text-decoration: underline
+
+          a.small 
+            span
+              font-style: italic
+              font-size: 14px
+              color: $grayish
+
+          a.important
+            +background(linear-gradient(lighten($lime, 10%), darken($lime, 10%)))
+            border: 1px solid darken($lime, 30%)
+            color: darken($lime, 40%)
+            display: block
+            padding: 15px
+            font-size: 23px
+            margin-bottom: 20px
+            +text-shadow(lighten($lime, 15%) 0px 1px 0px)
+            +box-shadow(lighten($lime, 15%) 0 1px 0 0 inset, #AEB3B5 0px 1px 1px)
+            +border-radius(3px)
+
+            span
+              font-size: 14px
+              display: block
+              margin-top: 4px
+              color: darken($lime, 30%)
+              font-style: italic
+
+            &:hover
+              text-decoration: none
+              color: darken($lime, 45%)
+              +background(linear-gradient(lighten($lime, 15%), darken($lime, 5%)))
+              +box-shadow(lighten($lime, 15%) 0 1px 0 0 inset, #AEB3B5 0px 1px 1px)
+
+    section.page-content
+      float: left
+      width: image-width("wordless_new.png") * 1.61
+
+      a
+        color: darken(#5D5D5D, 15%)
+
+        &:hover
+          color: #5D5D5D
+
+      h2
+        font-size: 30px
+        line-height: 37px
+        margin-bottom: 40px
+        font-family: Coustard
+        height: 145px
+        color: $blue
+
+      h4
+        font-size: 30px
+        line-height: 30px
+        margin-bottom: 15px
+        font-family: Coustard
+        color: $light-blue
+
+      ul, p
+        margin-bottom: 20px
+
+      li
+        margin-left: 25px
+        list-style-type: square
+        margin-bottom: 5px
+

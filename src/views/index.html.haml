@@ -1,0 +1,75 @@
+!!! 5
+%html
+  %head
+    %title Wordless
+    %link(href='http://fonts.googleapis.com/css?family=Coustard|Actor' rel='stylesheet' type='text/css')
+    %link(href="assets/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css")
+    /[if lt IE 9]
+      %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript")
+  %body
+    %a(href="https://github.com/welaika/wordless")
+      %img.github_badge(src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67")
+    .page-wrapper
+
+      %section.header
+        %p
+          %a(href="http://welaika.com") weLaika
+
+      %section.sidebar
+        %h1 Wordless
+
+        %nav
+          %ul
+            %li
+              %a.important(href="https://github.com/welaika/wordless/archive/0.3.zip")
+                Download the Plugin!
+                %span (and stop writing themes like it's 1998)
+            %li
+            %li
+              %a.small(href="https://github.com/welaika/wordless/archive/master.zip")
+                %span
+                  Searching for the blazing latest code?
+                  %br Get it here
+              %a(href="https://github.com/welaika/wordless#readme") Learn More
+            %li
+              %a(href="https://github.com/welaika/wordless") Browse Code
+            %li
+              %a.important(href="docs.html")
+                Get the Documentation!
+                %span freshly updated to new stable version 0.3!
+
+      %section.page-content
+        %h2
+          Wordless is an opinionated Wordpress plugin that dramatically speeds up your custom theme creation.
+
+        %h4 Features
+        :markdown
+          * A structured and clean [theme organization](https://github.com/welaika/wordless/tree/master/wordless/theme_builder/vanilla_theme)
+          * [Haml](http://haml-lang.com/) views (with support to layouts and partials)
+          * [Sass](http://sass-lang.com/) & [Compass](http://compass-style.org) stylesheets
+          * [Coffeescript](http://jashkenas.github.com/coffee-script/)-powered logic (optional)
+          * 50+ Rails-like [helper functions](https://github.com/welaika/wordless/tree/master/wordless/helpers)
+          * Released under the [MIT license](https://github.com/welaika/wordless#license)
+
+        %h4 Requirements
+        :markdown
+          * Wordpress `.htaccess` file present
+          * Ruby (any version, full RVM support)
+          * Compass and Sprockets gems installed
+
+      %section.footer
+        %p
+          Wordless has been crafted in
+          %a(href="http://welaika.com") weLaika
+
+    :javascript
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27435267-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+

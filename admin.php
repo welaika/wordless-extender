@@ -4,102 +4,16 @@
   Administration page
  */
 
-function wle_is_wordless_menu_present(){
-  if (is_plugin_active('wordless/wordless.php')){
-    $wordless_data = get_plugin_data(WP_PLUGIN_DIR . '/wordless/wordless.php');
-    $wordless_version = (float) $wordless_data['Version'];
+$wlCheck = new WordlessCheck;
+$wleMenu = new WordlessExtenderMenu($wlCheck->is_wordless_menu_present());
 
-    return $wordless_version > 0.3 ? true : false;
 
-  }
-}
-
-function wle_admin_actions() {  
-  global $plugin_dir, $plugin_url;
-  
-  // check if Wordless is already active
-  if (is_plugin_active('wordless/wordless.php') && wle_is_wordless_menu_present()){
-
-    $wordless_data = get_plugin_data(WP_PLUGIN_DIR . '/wordless/wordless.php');
-    $wordless_version = (float) $wordless_data['Version'];
-    var_dump($wordless_version);
-
-    // add submenu voice for plugin manager
-    add_submenu_page( 
-      'wordless', 
-      'Plugin Manager',
-      'Plugin Manager', 
-      'install_plugins', 
-      'plugin_manager', 
-      'wle_plugin_manager' 
-    );
-
-    // add submenu voice for constant config
-    add_submenu_page( 
-      'wordless', 
-      'Config Constants',
-      'Config Constants', 
-      'install_plugins', 
-      'config_constants', 
-      'wle_constants' 
-    );
-
-    // add submenu voice for security fixes
-    add_submenu_page( 
-      'wordless', 
-      'Security Fixes',
-      'Security Fixes', 
-      'install_plugins', 
-      'security_fixes', 
-      'wle_security' 
-    );
-
-  } else {
-
-    // add submenu voice for plugin manager
-    add_menu_page( 
-      'Wordless',
-      'Wordless',
-      'install_plugins',
-      'wordless-extender',
-      'wle_plugin_manager',
-      $plugin_url . '/images/welaika.16x16.png',
-      59
-    ); 
-
-    // add submenu voice for constant config
-    add_submenu_page( 
-      'wordless-extender', 
-      'Config Constants',
-      'Config Constants', 
-      'install_plugins', 
-      'config_constants', 
-      'wle_constants' 
-    );
-
-    // add submenu voice for security fixes
-    add_submenu_page( 
-      'wordless-extender', 
-      'Security Fixes',
-      'Security Fixes', 
-      'install_plugins', 
-      'security_fixes', 
-      'wle_security' 
-    );
-
-    // rename the first menu voice
-    global $submenu;
-    $submenu['wordless-extender'][0][0] = 'Plugin Manager';
-  }  
-
-}  
-
+//$wleMenu->create_menus();
 
 // Plugin Manager
 function wle_plugin_manager() {
-  global $plugin_dir, $plugin_url;
 
-  require_once $plugin_dir . 'functions.admin.php';
+  require_once WordlessExtender::$url . 'functions.admin.php';
 
   # add thickbox
   wp_enqueue_script('thickbox', null, array('jquery'));
@@ -107,9 +21,8 @@ function wle_plugin_manager() {
   wp_enqueue_style('wp-admin.css', '/' . WPINC . '/css/wp-admin.css', null, '1.0');
 
   # get plugin which we'd like to install ( 'interesting' plugins )
-  global $wle_to_be_installed_plugins;
   # for each plugin create an array of name => slug
-  _we_preprocess_to_be_installed($wle_to_be_installed_plugins);
+  _we_preprocess_to_be_installed($wle->to_be_installed_plugins);
   // echo "<pre>", var_dump($wle_to_be_installed_plugins)< "</pre>";
   
   # get all installed plugin
@@ -120,7 +33,7 @@ function wle_plugin_manager() {
   _we_preprocess_current_plugins($plugins);
   // echo "<pre>", var_dump($plugins), "</pre>";
 
-  $wle_to_be_installed_plugins = _we_merge($wle_to_be_installed_plugins, $plugins);
+  $wle->to_be_installed_plugins = _we_merge($wle_to_be_installed_plugins, $plugins);
   // echo "<pre>", var_dump($wle_to_be_installed_plugins)< "</pre>";
 
   $plugin_data = array();
@@ -440,4 +353,4 @@ if (get_option('blocklogin') == 'true'){
 }
 
 // hooks
-add_action('admin_menu', 'wle_admin_actions', 10);
+add_action('admin_menu', $wleMenu->create_menus(), 10);

@@ -6,16 +6,16 @@ Class WordlessExtender{
 
 
   public static $site_url;
-  public static $dir;
+  public static $path;
   public static $dirname;
   public static $url;
-  public static $to_be_installed_plugins;
+  public static $to_be_installed_plugins = array();
   
-  public function __construct()
+  public function __construct($path)
   {
     $this->set_site_url();
-    $this->set_dir();
-    $this->set_dirname();
+    $this->set_path($path);
+    $this->set_dirname($path);
     $this->set_url();
     $this->set_to_be_installed_plugins();
   }
@@ -30,19 +30,19 @@ Class WordlessExtender{
     return self::$site_url;
   }
 
-  private function set_dir()
+  private function set_path($path)
   {
-    self::$dir = dirname(__FILE__) ."/../";
+    self::$path = $path;
   }
 
-  public function get_dir()
+  public function get_path()
   {
-    return self::$dir;
+    return self::$path;
   }
 
-  private function set_dirname()
+  private function set_dirname($path)
   {
-    self::$dirname = basename(self::$dir);
+    self::$dirname = basename(self::$path);
   }
 
   public function get_dirname()
@@ -76,7 +76,7 @@ Class WordlessExtender{
       'Formidable Forms',
       'Limit Login Attempts'
     );
-    $to_be_installed_plugins = $pluginlist;
+    self::$to_be_installed_plugins = $pluginlist;
   }
 
 }

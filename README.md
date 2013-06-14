@@ -16,6 +16,16 @@ After years of hard work we have _starred_ a few plugins, best practices and sec
 enhacements. WlE is a collection of those and let you control all this so cool
 things within the WordPress backend, in a fast and familiar way.
 
+## EHY YA STOP! WE'RE IN YO-BUG!
+![yobug](http://i.qkme.me/3qhvd1.jpg)
+
+We are on the way to destroy them: we're refactoring ALL the old code, the new code
+and while doing this we'll resolve serious bug out there. In the meantime you have to wait!
+
+If interested in the refactoring work you can take a look [here](https://github.com/pioneerskies/wordless-extender/tree/refactor)
+
+Stay tuned
+
 ## Good habits, fast kickstart
 
 A strong and efficient workflow passes through consolidated practices, good coding

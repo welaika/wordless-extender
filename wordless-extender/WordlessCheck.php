@@ -4,7 +4,6 @@ Class WordlessCheck{
 
   public function __construct()
   {
-    echo "WordlessCheck si in";
   }
 
   private function is_wordless_installed()

@@ -43,7 +43,6 @@ Class WordlessExtenderMenu{
 
   public function __construct($wordless_menu_precence)
   {
-    echo __CLASS__ . ' is in';
     $has_wordless_menu = $wordless_menu_precence;
   }
 

@@ -43,7 +43,7 @@ Class WordlessExtenderMenu{
 
   public function __construct($wordless_menu_precence)
   {
-    $has_wordless_menu = $wordless_menu_precence;
+    $this->has_wordless_menu = $wordless_menu_precence;
   }
 
   public function create_menu($value)

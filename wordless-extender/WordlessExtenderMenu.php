@@ -23,7 +23,7 @@ Class WordlessExtenderMenu{
       'position' => 59
     );
 
-  private $constatnts_submenu = array(
+  private $constants_submenu = array(
       'parent_slug' => 'wordless-extender', 
       'page_title' => 'Config Constants',
       'menu_title' => 'Config Constants', 
@@ -76,11 +76,11 @@ Class WordlessExtenderMenu{
   {
     if ($this->has_wordless_menu){
       $this->create_submenu($this->plugins_submenu);
-      $this->create_submenu($this->constatnts_submenu);
+      $this->create_submenu($this->constants_submenu);
       $this->create_submenu($this->fixes_submenu);
     } else {
       $this->create_menu($this->plugins_menu);
-      $this->create_submenu($this->constatnts_submenu);
+      $this->create_submenu($this->constants_submenu);
       $this->create_submenu($this->fixes_submenu);
 
       //Don't know what the follow is doing!

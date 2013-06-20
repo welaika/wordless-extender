@@ -22,7 +22,6 @@ function wle_admin_actions() {
 
     $wordless_data = get_plugin_data(WP_PLUGIN_DIR . '/wordless/wordless.php');
     $wordless_version = (float) $wordless_data['Version'];
-    var_dump($wordless_version);
 
     // add submenu voice for plugin manager
     add_submenu_page( 

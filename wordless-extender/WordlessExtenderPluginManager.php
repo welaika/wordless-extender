@@ -165,4 +165,11 @@ class WlePlugin extends WordlessExtenderPluginManager{
         'bulk-plugins');
   }
 
+  public function get_urls($arg)
+  {
+    if (!$this->urls[$arg])
+      return 'Unkown type of url requested';
+    return $this->urls[$arg];
+  }
+
 }

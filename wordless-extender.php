@@ -24,8 +24,6 @@ new WordlessExtender(plugin_dir_path( __FILE__ ));
 require_once WordlessExtender::$path . 'admin.php';
 require_once WordlessExtender::$path . 'functions.php';
 
-$wlCheck = new WordlessCheck;
-$wleMenu = new WordlessExtenderMenu($wlCheck->is_wordless_menu_present());
 
 
 /*
@@ -69,6 +67,3 @@ if (get_option('blocklogin') == 'true'){
   add_filter('lostpassword_url', 'add_key_to_url', 101, 2);  
   add_filter('register', 'add_key_to_url', 101, 2);
 }
-
-// hooks
-add_action('admin_menu', array($wleMenu, 'create_menus'), 10);

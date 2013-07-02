@@ -13,6 +13,10 @@ Class WordlessExtender{
   
   public function __construct($path)
   {
+    $wlCheck = new WordlessCheck;
+    $wleMenu = new WordlessExtenderMenu($wlCheck->is_wordless_menu_present());
+    add_action('admin_menu', array($wleMenu, 'create_menus'), 10);
+    
     $this->set_site_url();
     $this->set_path($path);
     $this->set_dirname($path);

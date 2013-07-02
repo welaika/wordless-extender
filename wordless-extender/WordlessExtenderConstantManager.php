@@ -12,8 +12,6 @@ Class WordlessExtenderConstantManager{
     $this->constants_istances = array();
     $this->init_db();
     $this->initialized = $this->check_init();
-    // $this->declare_constants();
-    // $this->setup_constants();
 
     if (!$this->initialized){
       wle_show_message("Warnign: database is not initialized yet! Use the init button at the bottom of the page to do it", true);
@@ -26,37 +24,6 @@ Class WordlessExtenderConstantManager{
   {
     $this->template = WordlessExtender::$path . '/' . $tplpath;
   }
-
-  /* Credo sia diventata del tutto inutile: basta usare OBJ->init_constant('NOME')
-  ed fare una classe di nome WLE_NOME che estende la presente classe nel modo giusto.
-  In questo modo l'aggiunta di costanti diventa molto più dinamico
-  private function declare_constants()
-  {
-    $arr = array(
-        // 'WP_CONTENT_URL',
-        // 'UPLOADS',
-        // 'WP_PLUGIN_URL',
-        // 'WP_PLUGIN_DIR',
-        'WP_SITEURL',
-        // 'AUTH_KEY',
-        // 'SECURE_AUTH_KEY',
-        // 'LOGGED_IN_KEY',
-        // 'NONCE_KEY',
-        // 'AUTH_SALT',
-        // 'SECURE_AUTH_SALT',
-        // 'LOGGED_IN_SALT',
-        // 'NONCE_SALT',
-        // 'WP_LANG',
-        // 'DISALLOW_FILE_EDIT',
-        // 'EMPTY_TRASH_DAYS',
-        // 'WP_ALLOW_REPAIR',
-        // 'WP_POST_REVISIONS',
-        // 'DISABLE_WP_CRON',
-        // 'FS_METHOD',
-        // 'WP_CONTENT_DIR'
-      );
-    $this->constants = $arr;
-  }*/
 
   private function check_init()
   {
@@ -79,15 +46,6 @@ Class WordlessExtenderConstantManager{
             </div>';
     }
   }
-
-/* Da cancellare. Vedi commento alla funzione cancellata più su
-  private function setup_constants()
-  {
-    foreach ($this->constants as $constant) {
-      $classname = 'WLE_' . $constant;
-      $this->constants_istances[] = new $classname($constant);
-    }
-  }*/
 
   public function init_db()
   {

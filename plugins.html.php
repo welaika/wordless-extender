@@ -60,44 +60,44 @@
     </thead>
     <tbody>
       <?php foreach ($plugin_data as $p) : ?>
-        <tr class="<?php //print str_replace(' ', '-', strtolower($p->data['status'])); ?>">
-          <td class="status"><?php //print $p->data['status']; ?></td>
+        <tr class="<?php //print str_replace(' ', '-', strtolower($p->get_data('status'))); ?>">
+          <td class="status"><?php //print $p->get_data('status'); ?></td>
           
-          <td class="name"><?php print $p->data['Name']; ?></td>
+          <td class="name"><?php print $p->get_data('Name'); ?></td>
           
           <td class="version">
-            <?php if ($p->is_installed) : ?>
-              <?php print $p->data['Version']; ?>
+            <?php if ($p->is_installed()) : ?>
+              <?php print $p->get_data('Version'); ?>
             <?php endif; ?>
           </td>
           
           <td class="install">
-            <?php if (!$p->is_installed) : ?>
-              <a href="<?php print $p->urls['install']; ?>">Install</a>
+            <?php if (!$p->is_installed()) : ?>
+              <a href="<?php print $p->get_urls('install'); ?>">Install</a>
             <?php endif; ?>
           </td>
 
           <td class="upgrade">
-            <?php if ($p->is_installed) : ?>
-              <a href="<?php print $p->urls['update']; ?>">Upgrade</a>
+            <?php if ($p->is_installed()) : ?>
+              <a href="<?php print $p->get_urls('update'); ?>">Update</a>
             <?php endif; ?>
           </td>
           
           <td class="activate">
-            <?php if ($p->is_installed && !$p->is_active) : ?>
-              <a href="<?php print $p->urls['activate']; ?>">Activate</a>
+            <?php if ($p->is_installed() && !$p->is_active()) : ?>
+              <a href="<?php print $p->get_urls('activate'); ?>">Activate</a>
             <?php endif; ?>
           </td>
 
           <td class="deactivate">
-            <?php if ($p->is_active) : ?>
-              <a href="<?php print $p->urls['deactivate']; ?>">Deactivate</a>
+            <?php if ($p->is_active()) : ?>
+              <a href="<?php print $p->get_urls('deactivate'); ?>">Deactivate</a>
             <?php endif; ?>
           </td>
 
           <td class="delete">
-            <?php if ($p->is_installed && !$p->is_active) : ?>
-              <a href="<?php print $p->urls['delete']; ?>">Delete</a>
+            <?php if ($p->is_installed() && !$p->is_active()) : ?>
+              <a href="<?php print $p->get_urls('delete'); ?>">Delete</a>
             <?php endif; ?>
           </td>
         

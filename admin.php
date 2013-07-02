@@ -15,9 +15,9 @@ function wle_constants() {
   // if there's something in POST store it in DB and in wp-config.php
   if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-    foreach ($_POST as $name => $property){
-      if ($name != 'submit') update_option($name, $property);
-    }
+    // foreach ($_POST as $name => $property){
+    //   if ($name != 'submit') update_option($name, $property);
+    // }
 
     // array of not strings constant definitions
     $not_strings = array('DISALLOW_FILE_EDIT', 'EMPTY_TRASH_DAYS', 'WP_ALLOW_REPAIR', 'WP_POST_REVISIONS', 'DISABLE_WP_CRON', 'WP_CONTENT_DIR', 'WP_CONTENT_URL', 'UPLOADS', 'WP_PLUGIN_URL', 'WP_PLUGIN_DIR');
@@ -50,7 +50,9 @@ function wle_constants() {
       $get_constants['WP_PLUGIN_DIR'] = "WP_CONTENT_DIR .'/plugins'";
     }
     
-    
+    //
+    // QUESTE SONO COSTANTI DENTRO AL FILE
+    //
     foreach ($matches[0] as &$match){
       $match = "start>>>" . $match . "<<<end";
       $match = str_replace('start>>>define(', '', $match);
@@ -98,20 +100,20 @@ function wle_constants() {
     }
 
     // Update wp-config.php
-    $result = file_put_contents($config_file, $config_content);
+    // $result = file_put_contents($config_file, $config_content);
     // Store backup
-    $result = file_put_contents($config_file_backup, $config_content_backup);
+    // $result = file_put_contents($config_file_backup, $config_content_backup);
     // Rename wp-content folder
     if (isset($orig_constants["WP_CONTENT_URL"])){
       preg_match_all( '/\/(.*)\b/im', $orig_constants["WP_CONTENT_URL"], $old_wpcontent );
-      rename(ABSPATH . $old_wpcontent[1][0], ABSPATH . $_POST["WP_CONTENT_DIR"]);
+      // rename(ABSPATH . $old_wpcontent[1][0], ABSPATH . $_POST["WP_CONTENT_DIR"]);
     } else {
-      rename(ABSPATH .'wp-content', ABSPATH . $_POST["WP_CONTENT_DIR"]);
+      // rename(ABSPATH .'wp-content', ABSPATH . $_POST["WP_CONTENT_DIR"]);
     }
 
     // results pop message
-    if ($result != false) wle_show_message('Preferences saved!');
-    else wle_show_message('Error saving new settings in your wp-config file', true);
+    // if ($result != false) wle_show_message('Preferences saved!');
+    // else wle_show_message('Error saving new settings in your wp-config file', true);
     
     
   }
@@ -197,15 +199,15 @@ function wle_security() {
       }
 
       // Update wp-config.php
-      $result = file_put_contents($config_file, $updated_config_content);
+      // $result = file_put_contents($config_file, $updated_config_content);
       // Store backup
-      $result = file_put_contents($config_file_backup, $config_content_backup);
+      // $result = file_put_contents($config_file_backup, $config_content_backup);
     }
 
     // store values in wp db
     foreach ($_POST as $name => $property){
       if (($name != 'submit') && ($name != 'plugins_and_themes') && ($name != 'xmlrpc') && ($name != 'readme')){
-        update_option($name, $property);
+        // update_option($name, $property);
       }
     }
 

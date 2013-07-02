@@ -92,16 +92,14 @@ class WlePlugin extends WordlessExtenderPluginManager{
   private function set_is_active($plugin)
   {
     if (!$this->is_installed){
-      $this->is_active = false;
-      return;
+      $return = false;
     }
     foreach ($this->get_all_installed_plugins() as $key => $value){
-      if ($plugin == $value['Name']){
-        $this->is_active = true;
-        return;
-      } 
+      if ($plugin != $value['Name'])
+        continue;
+      $return = (is_plugin_active( $key )) ? true : false;
     }
-    $this->is_active = false;
+    $this->is_active = $return;
   }
 
   public function is_installed()

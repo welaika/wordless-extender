@@ -13,10 +13,11 @@ if ( ! defined( 'WPINC' ) ) {
   die;
 }
 
-require_once( plugin_dir_path( __FILE__ ) . 'wordless-extender/WordlessExtender.php');
-require_once( plugin_dir_path( __FILE__ ) . 'wordless-extender/WordlessCheck.php');
-require_once( plugin_dir_path( __FILE__ ) . 'wordless-extender/WordlessExtenderMenu.php');
-require_once( plugin_dir_path( __FILE__ ) . 'wordless-extender/WordlessExtenderPluginManager.php');
+function __autoload($classname) {
+  $filename = plugin_dir_path( __FILE__ ) ."wordless-extender/". $classname .".php";
+  if (is_readable($filename))
+    include_once($filename);
+}
 
 new WordlessExtender(plugin_dir_path( __FILE__ ));
 

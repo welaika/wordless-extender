@@ -35,7 +35,7 @@ class WordlessExtenderPluginManager {
 
 class WlePlugin extends WordlessExtenderPluginManager{
 
-  public $is_installed, $is_active, $data, $urls;
+  private $is_installed, $is_active, $data, $urls;
 
   public function __construct( $plugin )
   {

@@ -113,8 +113,10 @@ class WlePlugin extends WordlessExtenderPluginManager{
     return $this->is_active;
   }
 
-  public function get_data(){
-    return $this->data;
+  public function get_data($arg){
+    if (!$this->data[$arg])
+      return 'Unkown type of data requested';
+    return $this->data[$arg];
   }
 
   private function set_urls()

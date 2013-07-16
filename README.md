@@ -95,7 +95,7 @@ WlE menu in the WP backend, will be integrated with the Wordless new (will be in
 the next tagged release 0.4) custom backend menu, creating one place to control 
 them all!
 
-Wordless has (and will have moar!) helpers dedicated to the WlE's plugin collection.
+Wordless has (and will have more!) helpers dedicated to the WlE's plugin collection.
 Let contribute to the helpers too, if interested!
 
 ## Licence

@@ -7,27 +7,30 @@ Class WordlessExtenderDB {
 
   }
 
-  public static function save($constant_db_name, $value = NULL)
+  public static function save( $name, $value = null )
   {
-    if (!$_POST[$constant_db_name]){
-      wle_show_message("Database incoherence: $constant_db_name is not set in the DB. Is this plugin initialized? I'll abort", true);
-      return false;
-    }
-    if ($value) {
-      update_option( $constant_db_name, mysql_escape_string($value) );
+    if ( $value ) {
+      update_option( self::translate_name( $name ), $value );
+    } elseif ( isset( $_POST[$name] ) ){
+      update_option( self::translate_name( $name ), $_POST[$name] );
     } else {
-      update_option( $constant_db_name, mysql_escape_string($_POST[$constant_db_name]) );
+      return false;
     }
   }
 
-  public static function take($constant_db_name)
+  public static function take( $name )
   {
-    if (get_option($constant_db_name)){
-      $retval = get_option($constant_db_name);
-    } else {
-      $retval = FALSE;
-    }
-    return $retval;
+    $taken = get_option( self::translate_name( $name ) );
+
+    return ( $taken ) ? $taken : false;
+  }
+
+  private function translate_name( $name )
+  {
+    if ( !empty($name) )
+      return 'WLE_' . $name;
+
+    return false;
   }
 
 }

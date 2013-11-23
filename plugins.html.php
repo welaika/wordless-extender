@@ -1,10 +1,18 @@
+<?php
+  $pluginManager = new WordlessExtenderPluginManager(WordlessExtender::$to_be_installed_plugins);
+  $pluginManager->initialize_plugins();
+  $plugin_data = $pluginManager->get_plugin_istances();
+  // dump($plugin_data);
+  // $pluginManager->dump_initialized_plugin();
+
+?>
 <div class="wrap">
   <div id="icon-themes" class="icon32"><br></div>
   <h2>Plugin Manager</h2>
 
   <div class="description">
     <p>
-      Developed by <a href='http://dev.welaika.com'>weLaika</a>. View <a href="<?php print $plugin_url; ?>/README.md">README</a> for more details.
+      Developed by <a href='http://dev.welaika.com'>weLaika</a>. View <a href="<?php print WordlessExtender::$url; ?>/README.md">README</a> for more details.
     </p>
     <p>
       WordPress' plugins community contribuited are an essential part of WP itself. You probably wont reinvent the wheel
@@ -52,49 +60,49 @@
     </thead>
     <tbody>
       <?php foreach ($plugin_data as $p) : ?>
-        <tr class="<?php print str_replace(' ', '-', strtolower($p['status'])); ?>">
-          <td class="status"><?php print $p['status']; ?></td>
+        <tr class="<?php //print str_replace(' ', '-', strtolower($p->get_data('status'))); ?>">
+          <td class="status"><?php //print $p->get_data('status'); ?></td>
           
-          <td class="name"><?php print $p['name']; ?></td>
+          <td class="name"><?php print $p->get_data('Name'); ?></td>
           
           <td class="version">
-            <?php if ($p['status'] != 'Not installed') : ?>
-              <?php print $p['version']; ?>
+            <?php if ($p->is_installed()) : ?>
+              <?php print $p->get_data('Version'); ?>
             <?php endif; ?>
           </td>
           
           <td class="install">
-            <?php if ($p['status'] == 'Not installed') : ?>
-              <a href="<?php print $p['install']; ?>">Install</a>
+            <?php if (!$p->is_installed()) : ?>
+              <a href="<?php print $p->get_urls('install'); ?>">Install</a>
             <?php endif; ?>
           </td>
 
           <td class="upgrade">
-            <?php if ($p['upgrade'] && $p['status'] != 'Not installed') : ?>
-              <a href="<?php print $p['upgrade']; ?>">Upgrade</a>
+            <?php if ($p->is_installed()) : ?>
+              <a href="<?php print $p->get_urls('update'); ?>">Update</a>
             <?php endif; ?>
           </td>
           
           <td class="activate">
-            <?php if ($p['activate'] && $p['status'] == 'Not active') : ?>
-              <a href="<?php print $p['activate']; ?>">Activate</a>
+            <?php if ($p->is_installed() && !$p->is_active()) : ?>
+              <a href="<?php print $p->get_urls('activate'); ?>">Activate</a>
             <?php endif; ?>
           </td>
 
           <td class="deactivate">
-            <?php if ($p['deactivate'] && $p['status'] == 'Active') : ?>
-              <a href="<?php print $p['deactivate']; ?>">Deactivate</a>
+            <?php if ($p->is_active()) : ?>
+              <a href="<?php print $p->get_urls('deactivate'); ?>">Deactivate</a>
             <?php endif; ?>
           </td>
 
           <td class="delete">
-            <?php if ($p['delete'] && $p['status'] == 'Not active') : ?>
-              <a href="<?php print $p['delete']; ?>">Delete</a>
+            <?php if ($p->is_installed() && !$p->is_active()) : ?>
+              <a href="<?php print $p->get_urls('delete'); ?>">Delete</a>
             <?php endif; ?>
           </td>
         
           <td class="details">
-            <a href="<?php print $p['details']; ?>" class="thickbox" target="_blank">Details</a>
+            <a href="<?php //print $p['details']; ?>" class="thickbox" target="_blank">Details</a>
           </td>
         </tr>
       <?php endforeach; ?>

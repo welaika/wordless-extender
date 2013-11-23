@@ -9,8 +9,9 @@ function _wle_calculate_slug($plugin) {
   return $slug;
 }
 
-function _we_preprocess_to_be_installed(&$we_to_be_installed_plugins) {
-  foreach ($we_to_be_installed_plugins as &$p) {
+$pluginlist = WordlessExtender::$to_be_installed_plugins;
+function _we_preprocess_to_be_installed($pluginlist) {
+  foreach ($pluginlist as &$p) {
     if (!is_array($p)) {
       $p = array(
         "Name" => $p,
@@ -19,7 +20,7 @@ function _we_preprocess_to_be_installed(&$we_to_be_installed_plugins) {
     }
   }
 
-  usort($we_to_be_installed_plugins, function($a, $b) {
+  usort($pluginlist, function($a, $b) {
     return strcmp($a['Name'], $b['Name']);
   });
 }

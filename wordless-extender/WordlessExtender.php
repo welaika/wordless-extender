@@ -2,7 +2,7 @@
 
 include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-Class WordlessExtender{
+Class WordlessExtender {
 
 
   public static $site_url;

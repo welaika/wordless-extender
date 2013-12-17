@@ -78,7 +78,6 @@ function block(){
   if (!is_user_logged_in()){
     $get = get_values();
     if ((($_SERVER['PHP_SELF'] == '/wp-login.php') || ($_SERVER['PHP_SELF'] == '/admin')) && (!isset($_GET[$get['key']]) || ($_GET[$get['key']] != $get['value']))){
-      echo "qui";
       // set 404 header and redirect to home site
       header("HTTP/1.1 404 File not found");
       header("location:". $get['url']);

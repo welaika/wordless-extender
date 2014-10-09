@@ -54,12 +54,7 @@
         <th class="status">Status</th>
         <th class="name">Name</th>
         <th class="version">Version</th>
-        <th class="install"></th>
-        <th class="upgrade"></th>
-        <th class="activate"></th>
-        <th class="deactivate"></th>
-        <th class="delete"></th>
-        <th class="details"></th>
+        <th colspan="6">Options</th>
       </tr>
     </thead>
     <tbody>

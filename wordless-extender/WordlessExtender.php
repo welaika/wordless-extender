@@ -10,13 +10,13 @@ Class WordlessExtender {
   public static $dirname;
   public static $url;
   public static $to_be_installed_plugins = array();
-  
+
   public function __construct($path)
   {
     $wlCheck = new WordlessCheck;
     $wleMenu = new WordlessExtenderMenu($wlCheck->is_wordless_menu_present());
     add_action('admin_menu', array($wleMenu, 'create_menus'), 10);
-    
+
     $this->set_site_url();
     $this->set_path($path);
     $this->set_dirname($path);
@@ -69,16 +69,15 @@ Class WordlessExtender {
     $pluginlist = array(
       'Wordless',
       'users2Csv',
-      'White Label CMS', 
-      array('Name' => 'InfiniteWP Client', 'Slug' => 'iwp-client'), 
-      'Simple Fields', 
-      'Options Framework', 
-      'Posts To Posts',
+      array('Name' => 'InfiniteWP Client', 'Slug' => 'iwp-client'),
+      'Advanced Custom Fields',
+      array('Name' => 'Advanced Custom Fields Date-Time Picker', 'Slug' => 'acf-field-date-time-picker'),
       'Debug Bar',
       'Debug Bar Console',
       'Debug Bar Extender',
-      'Formidable Forms',
-      'Limit Login Attempts'
+      'Formidable',
+      'Limit Login Attempts',
+      'Regenerate Thumbnails'
     );
     self::$to_be_installed_plugins = $pluginlist;
   }

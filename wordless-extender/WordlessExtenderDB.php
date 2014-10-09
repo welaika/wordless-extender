@@ -2,11 +2,6 @@
 
 Class WordlessExtenderDB {
 
-  public function __construct()
-  {
-
-  }
-
   public static function save( $name, $value = null )
   {
     if ( $value ) {

@@ -3,7 +3,7 @@
 Class WordlessExtenderConstantManager{
 
     public $initialized;
-    private $wlewc;
+    private $wlewc, $inconstistent_constants = array();
 
     private static $instance;
 
@@ -26,6 +26,12 @@ Class WordlessExtenderConstantManager{
             wle_show_message("Warning: database is not initialized yet! Use the init button at the bottom of the page to do it", true);
             $this->init();
         }
+
+    }
+
+    public function print_inconsistences(){
+        if ( !empty($this->inconstistent_constants) )
+            wle_show_message("WARNING: " . join( ', ', $this->inconstistent_constants) . " is/are probably being modified by hand in wp-config.php. This is a risky situation. Check plugin's and file's value and correct them", 1);
     }
 
     private function check_init()
@@ -91,9 +97,15 @@ Class WordlessExtenderConstantManager{
     public function init_constant( $name ){
         $sub_class = 'WLE_' . $name;
         if (class_exists($sub_class))
-          return new $sub_class($name);
+          $constant = new $sub_class($name);
         else
-          return new WordlessConstant($name);
+          $constant = new WordlessConstant($name);
+
+
+        if ( !$constant->is_consistent() )
+            $this->inconstistent_constants[] = $constant->name;
+
+        return $constant;
     }
 
 }
@@ -168,7 +180,7 @@ Class WordlessConstant{
         }
     }
 
-    private function is_consistent()
+    public function is_consistent()
     {
         if ($this->presence_in_wpconfig === $this->presence_in_db)
             return true;

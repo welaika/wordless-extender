@@ -100,6 +100,7 @@
   <form method="post">
       <?php
         $cmanager = WordlessExtenderConstantManager::get_instance();
+        $cmanager->print_inconsistences();
         $cmanager->print_init_buttons();
       ?>
   </form>

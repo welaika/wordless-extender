@@ -44,13 +44,13 @@ Class WordlessExtenderConstantManager{
         if ($this->check_init()){
           echo '<div class="init_buttons">
                   <form action="'.$_SERVER['REQUEST_URI'].'" method="post">
-                    <input class="button-primary" name="WLE_init" value="RESET" type="submit" name="reset">
+                    <input class="button-primary" name="WLE_INIT" value="RESET" type="submit" name="reset">
                   </form>
                 </div>';
         } else {
           echo '<div class="init_buttons">
                   <form action="'.$_SERVER['REQUEST_URI'].'" method="post">
-                    <input class="button-primary" name="WLE_init" value="INIT" type="submit">
+                    <input class="button-primary" name="WLE_INIT" value="INIT" type="submit">
                   </form>
                 </div>';
         }
@@ -58,10 +58,10 @@ Class WordlessExtenderConstantManager{
 
     private function init_db()
     {
-        if (!isset($_POST['WLE_init']) || empty($_POST['WLE_init']))
+        if (!isset($_POST['WLE_INIT']) || empty($_POST['WLE_INIT']))
             return;
 
-        WordlessExtenderDB::save('WLE_init', 'OK');
+        WordlessExtenderDB::save('INIT', 'OK');
 
     }
 
@@ -87,7 +87,7 @@ Class WordlessExtenderConstantManager{
 
     private function init()
     {
-        if (!isset($_POST['WLE_init']) || empty($_POST['WLE_init']))
+        if (!isset($_POST['WLE_INIT']) || empty($_POST['WLE_INIT']))
           return;
 
         $this->init_db();

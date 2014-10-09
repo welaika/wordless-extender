@@ -35,7 +35,7 @@ class WordlessExtenderPluginManager {
 
 class WlePlugin extends WordlessExtenderPluginManager{
 
-  private $is_installed, $is_active, $data, $urls;
+  private $is_installed, $is_active, $data, $urls, $status;
 
   public function __construct( $plugin )
   {
@@ -49,6 +49,7 @@ class WlePlugin extends WordlessExtenderPluginManager{
     $this->set_is_installed($name);
     $this->set_data($name, $slug);
     $this->set_is_active($name);
+    $this->set_status();
     $this->set_urls();
   }
 
@@ -102,6 +103,34 @@ class WlePlugin extends WordlessExtenderPluginManager{
     $this->is_active = $return;
   }
 
+  private function set_status()
+  {
+    if ( $this->is_installed() && $this->is_active() ){
+
+      $this->status = 'Active';
+
+    } elseif ( $this->is_installed() && !$this->is_active() ){
+
+      $this->status = 'Inactive';
+
+    } elseif ( !$this->is_installed() ) {
+
+      $this->status = 'Not installed';
+
+    } else {
+
+      $this->status = 'Unknown';
+
+    }
+
+  }
+
+  public function get_status(){
+
+    return $this->status;
+
+  }
+
   public function is_installed()
   {
     return $this->is_installed;
@@ -115,7 +144,7 @@ class WlePlugin extends WordlessExtenderPluginManager{
 
   public function get_data($arg){
     if (!$this->data[$arg])
-      return 'Unkown type of data requested';
+      return 'Unknown type of data requested';
     return $this->data[$arg];
   }
 
@@ -127,12 +156,13 @@ class WlePlugin extends WordlessExtenderPluginManager{
     $this->set_activate_url();
     $this->set_deactivate_url();
     $this->set_delete_url();
+    $this->set_details_url();
   }
 
   private function set_install_url()
   {
     $this->urls['install'] = get_bloginfo( 'url' ) . '/wp-admin/' . wp_nonce_url(
-        'update.php?action=install-plugin&plugin=' . $this->data['Slug'], 
+        'update.php?action=install-plugin&plugin=' . $this->data['Slug'],
         'install-plugin_' . $this->data['Slug']
     );
   }
@@ -140,21 +170,21 @@ class WlePlugin extends WordlessExtenderPluginManager{
   private function set_update_url()
   {
     $this->urls['update'] = get_bloginfo( 'url' ) . '/wp-admin/' . wp_nonce_url(
-        'update.php?action=upgrade-plugin&plugin=' . $this->data['Slug'], 
+        'update.php?action=upgrade-plugin&plugin=' . $this->data['Slug'],
         'upgrade-plugin_' . $this->data['Slug'] );
   }
 
   private function set_activate_url()
   {
     $this->urls['activate'] = get_bloginfo( 'url' ) . '/wp-admin/' .  wp_nonce_url(
-        'plugins.php?action=activate&plugin=' . $this->data['Path'] . '&plugin_status=all&paged=1&s', 
+        'plugins.php?action=activate&plugin=' . $this->data['Path'] . '&plugin_status=all&paged=1&s',
         'activate-plugin_' . $this->data['Path']);
   }
 
   private function set_deactivate_url()
   {
     $this->urls['deactivate'] = get_bloginfo( 'url' ) . '/wp-admin/' .  wp_nonce_url(
-        'plugins.php?action=deactivate&plugin=' . $this->data['Path'] . '&plugin_status=all&paged=1&s', 
+        'plugins.php?action=deactivate&plugin=' . $this->data['Path'] . '&plugin_status=all&paged=1&s',
         'deactivate-plugin_' . $this->data['Path']);
   }
 
@@ -165,10 +195,15 @@ class WlePlugin extends WordlessExtenderPluginManager{
         'bulk-plugins');
   }
 
+  private function set_details_url()
+  {
+    $this->urls['details'] = get_bloginfo( 'url' ) . '/wp-admin/' .  'plugin-install.php?tab=plugin-information&plugin=' . $this->data['Slug'] . '&TB_iframe=true';
+  }
+
   public function get_urls($arg)
   {
     if (!$this->urls[$arg])
-      return 'Unkown type of url requested';
+      return 'Unknown type of url requested';
     return $this->urls[$arg];
   }
 

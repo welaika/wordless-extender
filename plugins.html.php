@@ -5,7 +5,11 @@
   // dump($plugin_data);
   // $pluginManager->dump_initialized_plugin();
 
+  wp_enqueue_script( 'plugin-install' );
+  add_thickbox();
+
 ?>
+
 <div class="wrap">
   <div id="icon-themes" class="icon32"><br></div>
   <h2>Plugin Manager</h2>
@@ -60,17 +64,17 @@
     </thead>
     <tbody>
       <?php foreach ($plugin_data as $p) : ?>
-        <tr class="<?php //print str_replace(' ', '-', strtolower($p->get_data('status'))); ?>">
-          <td class="status"><?php //print $p->get_data('status'); ?></td>
-          
+        <tr class="<?php print $p->get_data('Slug'); ?>">
+          <td class="status"><?php print $p->get_status(); ?></td>
+
           <td class="name"><?php print $p->get_data('Name'); ?></td>
-          
+
           <td class="version">
             <?php if ($p->is_installed()) : ?>
               <?php print $p->get_data('Version'); ?>
             <?php endif; ?>
           </td>
-          
+
           <td class="install">
             <?php if (!$p->is_installed()) : ?>
               <a href="<?php print $p->get_urls('install'); ?>">Install</a>
@@ -82,7 +86,7 @@
               <a href="<?php print $p->get_urls('update'); ?>">Update</a>
             <?php endif; ?>
           </td>
-          
+
           <td class="activate">
             <?php if ($p->is_installed() && !$p->is_active()) : ?>
               <a href="<?php print $p->get_urls('activate'); ?>">Activate</a>
@@ -100,9 +104,9 @@
               <a href="<?php print $p->get_urls('delete'); ?>">Delete</a>
             <?php endif; ?>
           </td>
-        
+
           <td class="details">
-            <a href="<?php //print $p['details']; ?>" class="thickbox" target="_blank">Details</a>
+            <a href="<?php print $p->get_urls('details'); ?>" class="thickbox">Details</a>
           </td>
         </tr>
       <?php endforeach; ?>

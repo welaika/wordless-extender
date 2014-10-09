@@ -5,39 +5,39 @@ Class WordlessExtenderMenu{
   private $has_wordless_menu;
 
   private $plugins_submenu = array(
-      'parent_slug' => 'wordless', 
+      'parent_slug' => 'wordless',
       'page_title' => 'Plugin Manager',
-      'menu_title' => 'Plugin Manager', 
-      'capability' => 'install_plugins', 
-      'menu_slug' => 'plugin_manager', 
+      'menu_title' => 'Plugin Manager',
+      'capability' => 'install_plugins',
+      'menu_slug' => 'plugin_manager',
       'function' => 'wle_plugin_manager'
     );
 
   private $plugins_menu = array(
-      'page_title' => 'Wordless',
-      'menu_title' => 'Wordless',
+      'page_title' => 'Wordless Extender',
+      'menu_title' => 'Wordless Extender',
       'capability' => 'install_plugins',
-      'menu_slug' => 'wordless-extender',
+      'menu_slug' => 'wordless',
       'function' => 'wle_plugin_manager',
       'icon_url' => '/wp-content/plugins/wordless-extender/images/welaika.16x16.png', //check it
       'position' => 59
     );
 
   private $constants_submenu = array(
-      'parent_slug' => 'wordless-extender', 
+      'parent_slug' => 'wordless',
       'page_title' => 'Config Constants',
-      'menu_title' => 'Config Constants', 
-      'capability' => 'install_plugins', 
-      'menu_slug' => 'config_constants', 
+      'menu_title' => 'Config Constants',
+      'capability' => 'install_plugins',
+      'menu_slug' => 'config_constants',
       'function' => 'wle_constants'
     );
 
   private $fixes_submenu = array(
-      'parent_slug' => 'wordless-extender', 
+      'parent_slug' => 'wordless',
       'page_title' => 'Security Fixes',
-      'menu_title' => 'Security Fixes', 
-      'capability' => 'install_plugins', 
-      'menu_slug' => 'security_fixes', 
+      'menu_title' => 'Security Fixes',
+      'capability' => 'install_plugins',
+      'menu_slug' => 'security_fixes',
       'function' => 'wle_security'
     );
 

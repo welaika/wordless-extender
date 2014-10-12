@@ -20,7 +20,7 @@ Class WordlessExtenderDB {
     return ( $taken ) ? $taken : false;
   }
 
-  private function translate_name( $name )
+  private static function translate_name( $name )
   {
     if ( !empty($name) )
       return 'WLE_' . $name;

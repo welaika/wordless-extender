@@ -70,7 +70,7 @@ Class WordlessExtenderConstantManager{
         $tpl_content = $this->wlewc->get_tpl();
         $orig = $this->wlewc->read();
 
-        // Salvare qui i parametri del database
+        $constants_to_migrate_into_new_wpconfig = [ 'DB_PASSWORD', 'DB_USER', 'DB_NAME', 'DB_HOST' ];
 
         if ($tpl_content){
             $this->wlewc->write($orig, ABSPATH . 'wp-config.orig.php');
@@ -83,6 +83,9 @@ Class WordlessExtenderConstantManager{
         // replace_constant( 'DB_NAME', define('DB_NAME', 'wordless');)
         // e così via per le altre. Un po' macchinoso, ma messo in un suo metodo
         // fa il porco lavoro con gli strumenti già a disposizione
+        foreach ($constants_to_migrate_into_new_wpconfig as $constant ) {
+            $c = new WordlessConstant( $constant, array( 'new_value' => constant($constant) ) );
+        }
      }
 
     private function init()

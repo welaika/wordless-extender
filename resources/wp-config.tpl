@@ -18,10 +18,10 @@
 define('DB_NAME', 'wordless');
 #END_WLE_DB_NAME
 #WLE_DB_USER
-define('DB_USER', 'root');
+define('DB_USER', 'user');
 #END_WLE_DB_USER
 #WLE_DB_PASSWORD
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'password');
 #END_WLE_DB_PASSWORD
 #WLE_DB_HOST
 define('DB_HOST', 'localhost');

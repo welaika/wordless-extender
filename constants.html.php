@@ -1,5 +1,7 @@
 <?php
   $form = new WordlessExtenderConstantForm;
+  $cmanager = WordlessExtenderConstantManager::get_instance();
+
 ?>
 <!-- style for generate button -->
 <style type="text/css">
@@ -49,30 +51,31 @@
       </thead>
       <tbody>
       <?php
-        $form->print_row('WP_SITEURL');
-        $form->print_row('AUTH_KEY');
-        $form->print_row('SECURE_AUTH_KEY');
-        $form->print_row('LOGGED_IN_KEY');
-        $form->print_row('NONCE_KEY');
-        $form->print_row('AUTH_SALT');
-        $form->print_row('SECURE_AUTH_SALT');
-        $form->print_row('LOGGED_IN_SALT');
-        $form->print_row('NONCE_SALT');
-        $form->print_row('WP_DEBUG', 'bool');
-        $form->print_row('DISALLOW_FILE_EDIT', 'bool');
-        $form->print_row(
-          'WPLANG',
-          'text',
-          'Set in the format <code>it_IT</code>'
-        );
-        $form->print_row(
-          'EMPTY_TRASH_DAYS',
-          'text',
-          'Use an integer to set the maximum trashed contents retention in <strong>days</strong>'
-        );
-        $form->print_row('DISABLE_WP_CRON', 'bool');
-        $form->print_row('WP_ALLOW_REPAIR', 'bool');
-
+        if ( $cmanager->initialized ){
+          $form->print_row('WP_SITEURL');
+          $form->print_row('AUTH_KEY');
+          $form->print_row('SECURE_AUTH_KEY');
+          $form->print_row('LOGGED_IN_KEY');
+          $form->print_row('NONCE_KEY');
+          $form->print_row('AUTH_SALT');
+          $form->print_row('SECURE_AUTH_SALT');
+          $form->print_row('LOGGED_IN_SALT');
+          $form->print_row('NONCE_SALT');
+          $form->print_row('WP_DEBUG', 'bool');
+          $form->print_row('DISALLOW_FILE_EDIT', 'bool');
+          $form->print_row(
+            'WPLANG',
+            'text',
+            'Set in the format <code>it_IT</code>'
+          );
+          $form->print_row(
+            'EMPTY_TRASH_DAYS',
+            'text',
+            'Use an integer to set the maximum trashed contents retention in <strong>days</strong>'
+          );
+          $form->print_row('DISABLE_WP_CRON', 'bool');
+          $form->print_row('WP_ALLOW_REPAIR', 'bool');
+        }
       ?>
       <!--
 
@@ -99,7 +102,6 @@
   </form>
   <form method="post">
       <?php
-        $cmanager = WordlessExtenderConstantManager::get_instance();
         $cmanager->print_inconsistences();
         $cmanager->print_init_buttons();
       ?>

@@ -123,14 +123,14 @@ Class WordlessConstant{
     private $to_be_updated;
     private $wlewc;
 
-    public function __construct( $constant_name )
+    public function __construct( $constant_name, $options = array( 'new_value' => null ) )
     {
         $this->wlewc = new WordlessExtenderWpconfig;
 
         $this->set_name( $constant_name );
         $this->set_presence_in_db();
         $this->set_old_value();
-        $this->set_new_value();
+        $this->set_new_value( $options['new_value'] );
         $this->set_presence_in_wpconfig();
         $this->set_to_be_updated();
 
@@ -174,13 +174,17 @@ Class WordlessConstant{
         $this->value = WordlessExtenderDB::take($this->name);
     }
 
-    private function set_new_value()
+    private function set_new_value( $new_value )
     {
-        if (isset($_POST[$this->name]) && !empty($_POST[$this->name])){
-            $this->new_value = $_POST[$this->name];
-        } else {
+        if ( !empty( $new_value ) )
+            $v = $new_value;
+        else
+            $v = $_POST[$this->name];
+
+        if (isset($v) && !empty($v))
+            $this->new_value = $v;
+        else
             $this->new_value = $this->value;
-        }
     }
 
     public function is_consistent()

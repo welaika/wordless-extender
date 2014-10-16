@@ -71,7 +71,12 @@ Class WordlessExtenderConstantManager{
         $tpl_content = $this->wlewc->get_tpl();
         $orig = $this->wlewc->read();
 
-        $constants_to_migrate_into_new_wpconfig = [ 'DB_PASSWORD', 'DB_USER', 'DB_NAME', 'DB_HOST' ];
+        $constants_to_migrate_into_new_wpconfig = [
+            'DB_PASSWORD' => DB_PASSWORD,
+            'DB_USER' => DB_USER,
+            'DB_NAME' => DB_NAME,
+            'DB_HOST' => DB_HOST
+        ];
 
         if ($tpl_content){
             $this->wlewc->write($orig, ABSPATH . 'wp-config.orig.php');

@@ -278,6 +278,11 @@ Class WordlessConstant{
                 return 'false';
                 break;
 
+            case null:
+            case '':
+                return "''";
+                break;
+
             case is_numeric($value):
                 return (int) $value;
                 break;

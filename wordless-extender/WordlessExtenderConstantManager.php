@@ -42,15 +42,16 @@ Class WordlessExtenderConstantManager{
     public function print_init_buttons()
     {
         if ($this->check_init()){
-          echo '<div class="init_buttons">
-                  <form action="'.$_SERVER['REQUEST_URI'].'" method="post">
-                    <input class="button-primary" name="WLE_INIT" value="RESET" type="submit" name="reset">
-                  </form>
+            echo '<div class="init_buttons">
+                    <form action="'.$_SERVER['REQUEST_URI'].'" method="post">
+                        <input class="button-primary" name="WLE_INIT" value="Reset" type="submit" name="reset">
+                    </form>
                 </div>';
+
         } else {
           echo '<div class="init_buttons">
                   <form action="'.$_SERVER['REQUEST_URI'].'" method="post">
-                    <input class="button-primary" name="WLE_INIT" value="INIT" type="submit">
+                    <input class="button-primary" name="WLE_INIT" value="Initialize" type="submit">
                   </form>
                 </div>';
         }

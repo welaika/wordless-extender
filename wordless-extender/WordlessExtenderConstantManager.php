@@ -140,10 +140,6 @@ Class WordlessConstant{
         $this->set_presence_in_wpconfig();
         $this->set_to_be_updated();
 
-        if (!$this->is_consistent())
-            wle_show_message("WARNING: {$this->name} is probably being modified by hand in wp-config.php.
-                This is a risky situation. Check plugin's and file's value and correct them", 1);
-
         if ($this->to_be_updated){
             $this->update_value($this->new_value);
             $this->update_wpc();

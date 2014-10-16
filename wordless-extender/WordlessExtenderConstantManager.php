@@ -99,8 +99,8 @@ Class WordlessExtenderConstantManager{
         if (!isset($_POST['WLE_INIT']) || empty($_POST['WLE_INIT']))
           return;
 
-        $this->init_db();
         $this->init_wpconfig();
+        $this->init_db();
     }
 
     public function init_constant( $name ){

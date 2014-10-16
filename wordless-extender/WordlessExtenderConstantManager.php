@@ -177,20 +177,24 @@ Class WordlessConstant{
 
     private function set_old_value()
     {
-        $this->value = WordlessExtenderDB::take($this->name);
+        $old_value = WordlessExtenderDB::take($this->name) ? WordlessExtenderDB::take($this->name) : '';
+        $this->value = $old_value;
     }
 
     private function set_new_value( $new_value )
     {
-        if ( !empty( $new_value ) )
+        if ( !empty( $new_value ) && !is_null($new_value) )
             $v = $new_value;
-        else
+        elseif ( isset( $_POST[$this->name] ) && !empty( $_POST[$this->name] ) && !is_null($_POST[$this->name]) )
             $v = $_POST[$this->name];
+        else
+            $v = '';
 
-        if (isset($v) && !empty($v))
+        if ( $v )
             $this->new_value = $v;
         else
             $this->new_value = $this->value;
+
     }
 
     public function is_consistent()

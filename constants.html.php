@@ -69,7 +69,7 @@
                     $form->print_row('LOGGED_IN_SALT');
                     $form->print_row('NONCE_SALT');
                     $form->print_row('WP_DEBUG', 'bool');
-                    $form->print_row('DISALLOW_FILE_EDIT', 'bool');a
+                    $form->print_row('DISALLOW_FILE_EDIT', 'bool');
                     $form->print_row(
                       'WPLANG',
                       'text',

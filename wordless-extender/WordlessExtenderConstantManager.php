@@ -89,8 +89,8 @@ Class WordlessExtenderConstantManager{
         // replace_constant( 'DB_NAME', define('DB_NAME', 'wordless');)
         // e così via per le altre. Un po' macchinoso, ma messo in un suo metodo
         // fa il porco lavoro con gli strumenti già a disposizione
-        foreach ($constants_to_migrate_into_new_wpconfig as $constant ) {
-            $c = new WordlessConstant( $constant, array( 'new_value' => constant($constant) ) );
+        foreach ($constants_to_migrate_into_new_wpconfig as $c_name => $c_value ) {
+            $c = new WordlessConstant( $c_name, array( 'new_value' => $c_value ) );
         }
      }
 

@@ -158,7 +158,7 @@ Class WordlessConstant{
 
     private function set_presence_in_db()
     {
-        $this->presence_in_db = (WordlessExtenderDB::take($this->name)) ? true : false;
+        $this->presence_in_db = ( WordlessExtenderDB::take($this->name) === false ) ? false : true;
     }
 
     private function set_presence_in_wpconfig()
@@ -173,8 +173,7 @@ Class WordlessConstant{
 
     private function set_old_value()
     {
-        $old_value = WordlessExtenderDB::take($this->name) ? WordlessExtenderDB::take($this->name) : '';
-        $this->value = $old_value;
+        $this->value = WordlessExtenderDB::take($this->name);
     }
 
     private function set_new_value( $new_value )
@@ -208,7 +207,7 @@ Class WordlessConstant{
             return;
         }
 
-        $this->to_be_updated = ($this->value === $this->new_value) ? FALSE : TRUE;
+        $this->to_be_updated = ($this->value === $this->new_value) ? false : true;
     }
 
     public function get_value()

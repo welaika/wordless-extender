@@ -7,6 +7,10 @@ Class WordlessExtenderDB {
     if ( !is_null($value) ) {
       update_option( self::translate_name( $name ), $value );
     } elseif ( isset( $_POST[$name] ) ){
+      // Non comprendo più l'esistenza di questo blocco logico:
+      // questo metodo seppur statico non ha motivo di riferirsi
+      // ai parametri POST nel caso in cui gli venga passata una
+      // null $value. Almeno non dovrebbe.
       update_option( self::translate_name( $name ), $_POST[$name] );
     } else {
       return false;
@@ -17,7 +21,13 @@ Class WordlessExtenderDB {
   {
     $taken = get_option( self::translate_name( $name ) );
 
-    return ( $taken ) ? $taken : false;
+    if ( false === $taken )
+      return false;
+    elseif ( '' === $taken )
+      return '';
+    else
+      return $taken;
+
   }
 
   private static function translate_name( $name )

@@ -4,7 +4,7 @@ Class WordlessExtenderDB {
 
   public static function save( $name, $value = null )
   {
-    if ( $value ) {
+    if ( !is_null($value) ) {
       update_option( self::translate_name( $name ), $value );
     } elseif ( isset( $_POST[$name] ) ){
       update_option( self::translate_name( $name ), $_POST[$name] );

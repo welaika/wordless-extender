@@ -3,7 +3,7 @@
 Class WordlessExtenderConstantManager{
 
     public $initialized;
-    private $wlewc, $inconstistent_constants = array();
+    private $wpconfig, $inconstistent_constants = array();
 
     private static $instance;
 
@@ -19,7 +19,7 @@ Class WordlessExtenderConstantManager{
 
     private function __construct()
     {
-        $this->wlewc = new WordlessExtenderWpconfig;
+        $this->wpconfig = new WordlessExtenderWpconfig;
         $this->initialized = $this->check_init();
 
         if (!$this->initialized){
@@ -36,7 +36,7 @@ Class WordlessExtenderConstantManager{
 
     private function check_init()
     {
-        return (get_option('WLE_INIT') && $this->wlewc->search('WLE_DB_NAME')) ? true : false;
+        return (get_option('WLE_INIT') && $this->wpconfig->search('WLE_DB_NAME')) ? true : false;
     }
 
     public function print_init_buttons()
@@ -68,8 +68,8 @@ Class WordlessExtenderConstantManager{
 
     private function init_wpconfig()
     {
-        $tpl_content = $this->wlewc->get_tpl();
-        $orig = $this->wlewc->read();
+        $tpl_content = $this->wpconfig->get_tpl();
+        $orig = $this->wpconfig->read();
 
         $constants_to_migrate_into_new_wpconfig = [
             'DB_PASSWORD' => DB_PASSWORD,
@@ -79,8 +79,8 @@ Class WordlessExtenderConstantManager{
         ];
 
         if ($tpl_content){
-            $this->wlewc->write($orig, ABSPATH . 'wp-config.orig.php');
-            $this->wlewc->write($tpl_content);
+            $this->wpconfig->write($orig, ABSPATH . 'wp-config.orig.php');
+            $this->wpconfig->write($tpl_content);
         }
 
         // Usare qui replace_constant() della classe WordlessExetenderWpconfig
@@ -127,11 +127,11 @@ Class WordlessConstant{
     private $presence_in_db;
     private $presence_in_wpconfig;
     private $to_be_updated;
-    private $wlewc;
+    private $wpconfig;
 
     public function __construct( $constant_name, $options = array( 'new_value' => null ) )
     {
-        $this->wlewc = new WordlessExtenderWpconfig;
+        $this->wpconfig = new WordlessExtenderWpconfig;
 
         $this->set_name( $constant_name );
         $this->set_presence_in_db();
@@ -163,7 +163,7 @@ Class WordlessConstant{
 
     private function set_presence_in_wpconfig()
     {
-        if ( $this->wlewc->search_schema($this->get_schema()) ){
+        if ( $this->wpconfig->search_schema($this->get_schema()) ){
             $this->presence_in_wpconfig = true;
         } else {
             $this->presence_in_wpconfig = false;
@@ -260,8 +260,8 @@ Class WordlessConstant{
 
     private function update_wpc()
     {
-        $new_wpconfig = $this->wlewc->replace_constant( $this->name, $this->get_schema());
-        $this->wlewc->write( $new_wpconfig );
+        $new_wpconfig = $this->wpconfig->replace_constant( $this->name, $this->get_schema());
+        $this->wpconfig->write( $new_wpconfig );
     }
 
     protected function get_casted_value()

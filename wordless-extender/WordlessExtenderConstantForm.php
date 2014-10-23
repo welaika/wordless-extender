@@ -24,6 +24,26 @@ class WordlessExtenderConstantForm
         return "<input {$checked} type=\"{$options['type']}\" name=\"{$options['name']}\" value=\"{$value}\" > {$label}";
     }
 
+    private function html_tag( $options )
+    {
+        // $label = ( isset($options['label']) ) ? $options['label'] : '';
+        // $checked = ( isset($options['checked'] ) && $options['checked'] == $options['value']) ? 'checked' : '';
+        // $value = ( isset($options['value']) ) ? $options['value'] : '';
+
+        $html_options = '';
+        foreach ($options['attrs'] as $key => $value){
+            $html_options .= "{$key}=\"{$value}\" ";
+        }
+
+        if ( $options['self_closing'] ){
+            $close = " />";
+        } else{
+            $close = ">{$options['text']}</{$options['tag']}>";
+        }
+
+        return "<{$options['tag']} {$html_options} {$close} ";
+    }
+
     private function td( $content )
     {
         echo '<td>' . $content . '</td>';
@@ -75,15 +95,16 @@ class WordlessExtenderConstantForm
         return $ret;
     }
 
-    public function print_row( $name, $args = array('type' => null, 'description' => ''))
+    public function print_row( $name, $args = array( 'type' => null, 'description' => '', 'extra_controls' => array() ))
     {
 
         if ( !is_array($args) ){
-            $args = array('type' => null, 'description' => '');
+            $args = array( 'type' => null, 'description' => '', 'extra_controls' => array() );
         }
 
-        $inputType = $args['type'];
+        $inputtype = $args['type'];
         $description = $args['description'];
+        $extra_controls = $args['extra_controls'];
 
         $html = '';
         $cmanager = WordlessExtenderConstantManager::get_instance();
@@ -92,7 +113,7 @@ class WordlessExtenderConstantForm
         if (!empty($description))
             $constantObj->set_description($description);
 
-        $inputs = $this->parse_input_type( $name, $inputType, $constantObj );
+        $inputs = $this->parse_input_type( $name, $inputtype, $constantObj );
 
         $this->tr_open();
         $this->td($constantObj->get_name());
@@ -103,11 +124,10 @@ class WordlessExtenderConstantForm
         }
             $this->td( $html );
 
-        $this->td($this->input(array(
-                "type" => "checkbox",
-                "name" => "reset-{$name}"
-            )));
+        if ( !empty( $extra_controls ) ){
 
+            $this->td( $this->html_tag( $extra_controls ) );
+        }
         $this->tr_close();
     }
 

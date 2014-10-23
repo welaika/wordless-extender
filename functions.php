@@ -21,6 +21,19 @@ function wle_show_message($message, $is_error = false) {
 }
 
 
+// Enqueue constants javascript
+function wle_constants_scripts(){
+  wp_register_script("wle_constants", WordlessExtender::$url ."/javascripts/constants.js", 'jquery', false, true);
+  wp_enqueue_script("wle_constants");
+}
+
+add_action('admin_enqueue_scripts', 'wle_constants_scripts' );
+
+
+
+
+
+
 
 
 

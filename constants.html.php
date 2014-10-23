@@ -52,8 +52,6 @@
                         <th class="constant">Constant Name</th>
                         <th class="description">Description</th>
                         <th class="value">Value</th>
-                        <th class="value">Reset</th>
-                        <th class="description">Ref.</th>
                         <th class="extra">Extra Controls</th>
                     </tr>
                 </thead>
@@ -106,23 +104,4 @@
       ?>
   </form>
 </div>
-
-<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js'></script>
-<!-- Generate random key -->
-<script type="text/javascript">
-  function randomString(length, chars) {
-      var result = '';
-      for (var i = length; i > 0; --i) result += chars[Math.round(Math.random() * (chars.length - 1))];
-      return result;
-  }
-
-  $(document).ready(function(){
-
-    $('.generate').click(function(){
-      $target = $($(this).data('target'));
-      $target.val(randomString(65, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
-    });
-
-  });
-</script>
 

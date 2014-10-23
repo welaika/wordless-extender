@@ -103,7 +103,8 @@ Class WordlessExtenderConstantManager{
         $this->init_db();
     }
 
-    public function init_constant( $name ){
+    public function init_constant( $name )
+    {
         $sub_class = 'WLE_' . $name;
         if (class_exists($sub_class))
           $constant = new $sub_class($name);
@@ -115,6 +116,18 @@ Class WordlessExtenderConstantManager{
             $this->inconstistent_constants[] = $constant->name;
 
         return $constant;
+    }
+
+    public function update_constants()
+    {
+        $constants_collection = WordlessExtenderConstantCollection::get_list();
+
+        foreach ($constants_collection as $name => $args) {
+            new WordlessConstant( $name );
+        }
+
+        $clean_url = preg_replace('/&message=[0-9]{0,2}/', '', $_SERVER['HTTP_REFERER']);
+        wp_redirect( $clean_url .'&message=1' );
     }
 
 }

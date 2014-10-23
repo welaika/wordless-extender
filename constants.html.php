@@ -1,6 +1,7 @@
 <?php
   $cmanager = WordlessExtenderConstantManager::get_instance();
   $form = new WordlessExtenderConstantForm;
+  wle_show_message(WordlessExtender::get_message($_GET['message']));
 
 ?>
 <!-- style for generate button -->
@@ -41,7 +42,7 @@
 
     ?>
 
-        <form method="post" action=" ">
+        <form method="post" action="admin.php?action=update_constants">
 
             <h3>Constants list</h3>
 
@@ -59,29 +60,12 @@
 
                 <tbody>
     <?php
-                    $form->print_row('WP_SITEURL');
-                    $form->print_row('AUTH_KEY');
-                    $form->print_row('SECURE_AUTH_KEY');
-                    $form->print_row('LOGGED_IN_KEY');
-                    $form->print_row('NONCE_KEY');
-                    $form->print_row('AUTH_SALT');
-                    $form->print_row('SECURE_AUTH_SALT');
-                    $form->print_row('LOGGED_IN_SALT');
-                    $form->print_row('NONCE_SALT');
-                    $form->print_row('WP_DEBUG', 'bool');
-                    $form->print_row('DISALLOW_FILE_EDIT', 'bool');
-                    $form->print_row(
-                      'WPLANG',
-                      'text',
-                      'Set in the format <code>it_IT</code>'
-                    );
-                    $form->print_row(
-                      'EMPTY_TRASH_DAYS',
-                      'text',
-                      'Use an integer to set the maximum trashed contents retention in <strong>days</strong>'
-                    );
-                    $form->print_row('DISABLE_WP_CRON', 'bool');
-                    $form->print_row('WP_ALLOW_REPAIR', 'bool');
+
+                    $constants_collection = WordlessExtenderConstantCollection::get_list();
+
+                    foreach ( $constants_collection as $name => $args ) {
+                        $form->print_row( $name, $args );
+                    }
 
     ?>
 

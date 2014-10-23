@@ -22,6 +22,7 @@ Class WordlessExtender {
     $this->set_dirname($path);
     $this->set_url();
     $this->set_to_be_installed_plugins();
+    $this->set_admin_actions();
   }
 
   private function set_site_url()
@@ -64,6 +65,12 @@ Class WordlessExtender {
     return self::$url;
   }
 
+  private function set_admin_actions()
+  {
+    $constant_manager = WordlessExtenderConstantManager::get_instance();
+    add_action('admin_action_update_constants', array( $constant_manager, 'update_constants' ) );
+  }
+
   private function set_to_be_installed_plugins()
   {
     $pluginlist = array(
@@ -82,5 +89,10 @@ Class WordlessExtender {
     self::$to_be_installed_plugins = $pluginlist;
   }
 
+  public static function get_message($code = 0)
+  {
+    $messages = array(0 => false, 1 => 'Successfully updated');
+    return $messages[$code];
+  }
 }
 

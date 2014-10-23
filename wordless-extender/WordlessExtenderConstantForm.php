@@ -75,8 +75,16 @@ class WordlessExtenderConstantForm
         return $ret;
     }
 
-    public function print_row( $name, $inputType = null, $description = '' )
+    public function print_row( $name, $args = array('type' => null, 'description' => ''))
     {
+
+        if ( !is_array($args) ){
+            $args = array('type' => null, 'description' => '');
+        }
+
+        $inputType = $args['type'];
+        $description = $args['description'];
+
         $html = '';
         $cmanager = WordlessExtenderConstantManager::get_instance();
 

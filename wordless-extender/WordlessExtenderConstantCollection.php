@@ -27,7 +27,7 @@ Class WordlessExtenderConstantCollection {
 
 
     // Generate custom array for key constant fields passing $key
-    private function salt_attributes($key){
+    private static function salt_attributes($key){
         return array("tag" => "div", "text" => 'Generate Key', "attrs" => array("data-target" => $key, "class" => "button keygen_js"), "self_closing" => false );
     }
 

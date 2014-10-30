@@ -5,22 +5,6 @@
     wle_show_message(WordlessExtender::get_message($_GET['message']));
 
 ?>
-<!-- style for generate button -->
-<style type="text/css">
-  a.generate{
-    background-color: lightgray;
-    border: 1px solid darkgray;
-    color: black;
-    float: right;
-    padding: 2px 10px;
-  }
-  a.generate:hover{
-    cursor: pointer;
-    background-color: darkgray;
-    color: white;
-  }
-</style>
-
 <div class="wrap">
     <div id="icon-themes" class="icon32"><br></div>
         <h2>Config Constants</h2>
@@ -67,30 +51,12 @@
                     }
 
     ?>
-
-                    <!--
-
-                      <td>WP_POST_REVISIONS</td>
-                      <td>define the WP_POST_REVISIONS. Must be an integer.</td>
-                      <td><input type="text" name="WP_POST_REVISIONS" value="<?php echo get_option('WLE_WP_POST_REVISIONS'); ?>"></td>
-                    </tr>
-                    <tr>
-                      <td>FS_METHOD</td>
-                      <td>define the FS_METHOD. forces the filesystem method. It should only be "direct", "ssh2", "ftpext", or "ftpsockets". For details <a href="http://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants">http://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants</a></td>
-                      <td><input type="text" name="FS_METHOD" value="<?php echo get_option('WLE_FS_METHOD'); ?>"></td>
-                    </tr>
-                    <tr>
-                      <td>WP_CONTENT_DIR</td>
-                      <td>define the WP_CONTENT_DIR. Without /</td>
-                      <td><input type="text" name="WP_CONTENT_DIR" value="<?php echo get_option('WLE_WP_CONTENT_DIR'); ?>"></td>
-                    </tr> -->
-
                 </tbody>
             </table>
 
             <p class="submit">
                 <input type="submit" id="submit" class="button-primary" value="Save constants">
-                Remember that a backup of wp-config is stored in a new file named wp-config.php.bak in site root.
+                Remember that a backup of wp-config is stored in a new file named wp-config.orig.php in site root.
             </p>
 
         </form>

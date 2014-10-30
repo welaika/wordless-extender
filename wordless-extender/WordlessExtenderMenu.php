@@ -13,6 +13,7 @@ Class WordlessExtenderMenu{
       'function' => 'wle_plugin_manager'
     );
 
+
   private $plugins_menu = array(
       'page_title' => 'Wordless Extender',
       'menu_title' => 'Wordless Extender',
@@ -41,9 +42,9 @@ Class WordlessExtenderMenu{
       'function' => 'wle_security'
     );
 
-  public function __construct($wordless_menu_precence)
+  public function __construct($wordless_menu_presence)
   {
-    $this->has_wordless_menu = $wordless_menu_precence;
+    $this->has_wordless_menu = $wordless_menu_presence;
   }
 
   public function create_menu($value)
@@ -83,8 +84,8 @@ Class WordlessExtenderMenu{
       $this->create_submenu($this->fixes_submenu);
 
       //Don't know what the follow is doing!
-      global $submenu;
-      $submenu['wordless-extender'][0][0] = 'Plugin Manager';
+      // global $submenu;
+      // $submenu['wordless-extender'][0][0] = 'Plugin Manager';
     }
   }
 

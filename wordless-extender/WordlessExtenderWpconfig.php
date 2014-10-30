@@ -58,7 +58,6 @@ Class WordlessExtenderWpconfig {
   {
     $file = is_null($where) ? $this->path : $where;
 
-    file_put_contents("{$file}.bak", $what);
     $retval = file_put_contents($file, $what);
 
     if ($retval === FALSE ){

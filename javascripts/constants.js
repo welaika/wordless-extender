@@ -10,7 +10,7 @@ jQuery(document).ready(function($){
 
   $('.keygen_js').click(function(){
     $target = $("[name=\""+ $(this).data('target') +"\"]");
-    $target.val(randomString(65, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'));
+    $target.val(randomString(65, '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$%&-_!?'));
   });
 
 });

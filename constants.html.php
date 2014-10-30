@@ -1,7 +1,8 @@
 <?php
   $cmanager = WordlessExtenderConstantManager::get_instance();
   $form = new WordlessExtenderConstantForm;
-  wle_show_message(WordlessExtender::get_message($_GET['message']));
+  if ( isset( $_GET['message'] ) )
+    wle_show_message(WordlessExtender::get_message($_GET['message']));
 
 ?>
 <!-- style for generate button -->

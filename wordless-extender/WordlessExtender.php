@@ -68,7 +68,10 @@ Class WordlessExtender {
   private function set_admin_actions()
   {
     $constant_manager = WordlessExtenderConstantManager::get_instance();
+    $security = new WordlessExtenderSecurity;
     add_action('admin_action_update_constants', array( $constant_manager, 'update_constants' ) );
+    add_action('admin_action_update_securities', array( $security, 'update_securities' ) );
+
   }
 
   private function set_to_be_installed_plugins()

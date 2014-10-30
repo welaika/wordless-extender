@@ -27,21 +27,21 @@
         <td>.htaccess</td>
         <td>Make your .htaccess more solid. A backup is stored in .htaccess_backup</td>
         <td>
-          <?php 
+          <?php
             $true_htaccess = '';
             $false_htaccess = '';
             if (get_option('htaccess_fix') == 'true') $true_htaccess = 'checked';
             elseif (get_option('htaccess_fix') == 'false') $false_htaccess = 'checked';
           ?>
           <input type="radio" name="htaccess_fix" value="false" <?php echo $false_htaccess ?>> False
-          <input type="radio" name="htaccess_fix" value="true" <?php echo $true_htaccess ?>> True 
+          <input type="radio" name="htaccess_fix" value="true" <?php echo $true_htaccess ?>> True
         </td>
       </tr>
       <tr>
         <td>Plugins and themes</td>
         <td>Remove default WordPress plugins and themes. <span style="color:red">Warning: you can't undo this action!</span></td>
         <td>
-          <?php 
+          <?php
           if (!file_exists(WP_CONTENT_DIR .'/themes/twentyten')) $tw10 = 'disabled';
           else $tw10 = '';
           if (!file_exists(WP_CONTENT_DIR .'/themes/twentyeleven')) $tw11 = 'disabled';
@@ -72,66 +72,31 @@
         </td>
       </tr>
       <tr>
-        <td>DEBUG</td>
-        <td>Enable or disable WP_DEBUG. <strong>If "All" option is selected enable all error reporting 
-          <br />and write a log file (error.log), if "All with GET" option is selected it works <span style="color:red">everytime</span> you pass via GET <span style="color:red">?debug=debug</span>.</strong><br />Will be created a backup file in wp-config-backup.php</td>
-        <td>
-          <?php 
-            $false_debug = '';
-            $true_debug = '';
-            $all_debug = '';
-            $custom_debug = '';
-            if (get_option('debug') == 'false') $false_debug = 'checked';
-            elseif (get_option('debug') == 'true') $true_debug = 'checked';
-            elseif (get_option('debug') == 'all') $all_debug = 'checked';
-            elseif (get_option('debug') == 'custom') $custom_debug = 'checked';
-          ?>
-          <input type="radio" name="debug" value="false" <?php echo $false_debug; ?>> False
-          <input type="radio" name="debug" value="true" <?php echo $true_debug; ?>> True<br />
-          <input type="radio" name="debug" value="all" <?php echo $all_debug; ?>> All
-          <input type="radio" name="debug" value="custom" <?php echo $custom_debug; ?>> All with GET 
-        </td>
-      </tr>
-      <tr>
         <td>Meta infos</td>
         <td>Remove Wordpress meta info from header and feeds.</td>
         <td>
-          <?php 
+          <?php
             $true_rmmetas = '';
             $false_rmmetas = '';
             if (get_option('rmmetas') == 'true') $true_rmmetas = 'checked';
             elseif (get_option('rmmetas') == 'false') $false_rmmetas = 'checked';
           ?>
           <input type="radio" name="rmmetas" value="false" <?php echo $false_rmmetas ?>> False
-          <input type="radio" name="rmmetas" value="true" <?php echo $true_rmmetas ?>> True 
+          <input type="radio" name="rmmetas" value="true" <?php echo $true_rmmetas ?>> True
         </td>
       </tr>
       <tr>
         <td>Scripts version</td>
         <td>Remove scripts version (js & css).</td>
         <td>
-          <?php 
+          <?php
             $true_rmscriptver = '';
             $false_rmscriptver = '';
             if (get_option('rmscriptver') == 'true') $true_rmscriptver = 'checked';
             elseif (get_option('rmscriptver') == 'false') $false_rmscriptver = 'checked';
           ?>
           <input type="radio" name="rmscriptver" value="false" <?php echo $false_rmscriptver ?>> False
-          <input type="radio" name="rmscriptver" value="true" <?php echo $true_rmscriptver ?>> True 
-        </td>
-      </tr>
-      <tr>
-        <td>Block wp-login</td>
-        <td>Block direct access to wp-login. <span style="color: red"><strong>You must pass via GET ?access=allow</strong></span></td>
-        <td>
-          <?php 
-            $true_blocklogin = '';
-            $false_blocklogin = '';
-            if (get_option('blocklogin') == 'true') $true_blocklogin = 'checked';
-            elseif (get_option('blocklogin') == 'false') $false_blocklogin = 'checked';
-          ?>
-          <input type="radio" name="blocklogin" value="false" <?php echo $false_blocklogin ?>> False
-          <input type="radio" name="blocklogin" value="true" <?php echo $true_blocklogin ?>> True 
+          <input type="radio" name="rmscriptver" value="true" <?php echo $true_rmscriptver ?>> True
         </td>
       </tr>
     </table>

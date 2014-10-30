@@ -23,8 +23,8 @@ Class WordlessExtenderConstantManager{
         $this->initialized = $this->check_init();
 
         if (!$this->initialized){
-            wle_show_message("Warning: database is not initialized yet! Use the init button at the bottom of the page to do it", true);
             $this->init();
+            // wle_show_message("Warning: database is not initialized yet! Use the init button at the bottom of the page to do it", true);
         }
 
     }

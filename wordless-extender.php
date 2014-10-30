@@ -29,4 +29,6 @@ if ((defined( 'WPINC' )) && (php_sapi_name() != 'cli')) { // This will let wp-cl
 
     require_once WordlessExtender::$path . 'admin.php';
 
+    $wordless_extender_security = new WordlessExtenderSecurity;
+
 }

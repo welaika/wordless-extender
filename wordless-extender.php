@@ -19,6 +19,8 @@ if ((defined( 'WPINC' )) && (php_sapi_name() != 'cli')) { // This will let wp-cl
             include_once($filename);
     }
 
+    require_once WordlessExtender::$path . 'functions.php';
+
     try {
         new WordlessExtender(plugin_dir_path( __FILE__ ));
     } catch ( Exception $e) {
@@ -26,7 +28,6 @@ if ((defined( 'WPINC' )) && (php_sapi_name() != 'cli')) { // This will let wp-cl
     }
 
     require_once WordlessExtender::$path . 'admin.php';
-    require_once WordlessExtender::$path . 'functions.php';
 
 
 

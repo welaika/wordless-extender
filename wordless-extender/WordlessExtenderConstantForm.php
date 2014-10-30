@@ -104,7 +104,8 @@ class WordlessExtenderConstantForm
 
         $inputtype = $args['type'];
         $description = $args['description'];
-        $extra_controls = $args['extra_controls'];
+        if ( isset( $args['extra_controls'] ) )
+            $extra_controls = $args['extra_controls'];
 
         $html = '';
         $cmanager = WordlessExtenderConstantManager::get_instance();

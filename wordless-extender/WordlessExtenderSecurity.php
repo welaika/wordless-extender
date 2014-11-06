@@ -109,14 +109,14 @@
         return $src;
     }
 
-    private function set_updatables()
+    private static function updatables()
     {
-        $this->updatables = array( 'REMOVE_META_INFOS' );
+        return array( 'REMOVE_META_INFOS', 'REMOVE_DEFAULT_THEMES_AND_PLUGINS', 'REMOVE_README', 'REMOVE_XMLRPC', 'HARDEN_HTACCESS', 'REMOVE_LICENSE' );
     }
 
-    public function update_securities()
+    public static function update_securities()
     {
-        foreach ($this->updatables as $field) {
+        foreach (self::updatables() as $field) {
             if (isset($_POST[$field]) && ( $_POST[$field] != WordlessExtenderDB::take($field) ) ) {
                 WordlessExtenderDB::save( $field, $_POST[$field] );
             }

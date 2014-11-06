@@ -2,7 +2,7 @@
   /*
   Plugin Name: Wordless Extender
   Plugin URI: https://github.com/welaika/wordless-extender
-  Description: Wordless Extender is a starting point for every WordPress web developer. Give a list of plugin we usually install on every installation, or we need to remember to install!
+  Description: Wordless Extender is a starting point for every WordPress web developer. Give a list of plugin we usually install, edit your wp-config.php and make security fixes.
   Author: Welaika
   Version: 1
   Author URI: http://dev.welaika.com

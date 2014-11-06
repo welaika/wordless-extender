@@ -28,3 +28,11 @@ function wle_constants_scripts(){
 }
 
 add_action('admin_enqueue_scripts', 'wle_constants_scripts' );
+
+// Enqueue WLE stylesheets
+function wle_stylesheets(){
+  wp_register_style("wle_style", WordlessExtender::$url ."/stylesheets/wordless-extender.css");
+  wp_enqueue_style("wle_style");
+}
+
+add_action('admin_enqueue_scripts', 'wle_stylesheets' );

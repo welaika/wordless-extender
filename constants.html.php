@@ -10,15 +10,13 @@
         <h2>Config Constants</h2>
     <div class="description">
     <p>
-      Developed by <a href='http://dev.welaika.com'>weLaika</a>.
-    </p>
-    <p>
-        You WordPress wp-config.php has a bounch of constants that you absolutely don't want to forget! <br />
-        Someone are security related, others a utility. You can discover and manage them directly within this panel.
+        <strong>wp-config.php</strong> has a lot of configurations that you want to remember. <br />
+        You can discover and manage them within this panel. <br />
 
-        At every update of the configuration, a wp-config-backup.php with previous config version will be created as your personal parachute.
+        At every update a wp-config.php.orig with previous version will be created.<br />
+        <span class="red">Remember to delete your cookies and don't worry about new login requests after keys updates.</span><br />
 
-        Use the power with care! ;)
+        Use the power with care!
     </p>
 </div>
 
@@ -56,7 +54,6 @@
 
             <p class="submit">
                 <input type="submit" id="submit" class="button-primary" value="Save constants">
-                Remember that a backup of wp-config is stored in a new file named wp-config.orig.php in site root.
             </p>
 
         </form>

@@ -9,13 +9,9 @@ if ( isset( $_GET['message'] ) )
     <h2>Security Fixes</h2>
     <div class="description">
         <p>
-            Developed by <a href='http://dev.welaika.com'>weLaika</a>.
-        </p>
-        <p>
-            This is a collection of security tricks, fast applying within this control panel. These are taken from
-            <a href="http://codex.wordpress.org/Hardening_WordPress">Hardening Wordpress</a> and a bit around our ì
-            WP dev experience.
-            Please, pay attention to the <span style="color:red">warnings</span>
+            This is a collection of security tricks.<br />
+            These are taken from <a href="http://codex.wordpress.org/Hardening_WordPress">Hardening Wordpress</a> and from our WP experience.<br />
+            Please, pay attention to the <span class="red">warnings</span>.
         </p>
     </div>
 
@@ -50,7 +46,7 @@ if ( isset( $_GET['message'] ) )
 
                 <tr>
                     <td>Plugins and themes</td>
-                    <td>Remove default WordPress plugins and themes. <span style="color:red">Warning: you can't undo this action!</span></td>
+                    <td>Remove default WordPress plugins and themes. <span class="red">Warning: you can't undo this action!</span></td>
                     <td>
                         <?php
                         $tw10 = ( !file_exists( WP_CONTENT_DIR .'/themes/twentyten' ) ) ? 'disabled' : '';
@@ -71,7 +67,7 @@ if ( isset( $_GET['message'] ) )
 
                 <tr>
                     <td>XMLRPC</td>
-                    <td>Remove xmlrpc.php file. <span style="color:red">Warning: you can't undo this action!</span></td>
+                    <td>Remove xmlrpc.php file. <span class="red">Warning: you can't undo this action!</span></td>
                     <td>
                         <?php if ( file_exists( WordlessExtenderSecurity::$xmlrpc_path ) ) : ?>
                             <input type="checkbox" name="REMOVE_XMLRPC" value="true"> Sure?
@@ -83,7 +79,7 @@ if ( isset( $_GET['message'] ) )
 
                 <tr>
                     <td>README</td>
-                    <td>Remove readme.html file. <span style="color:red">Warning: you can't undo this action!</span></td>
+                    <td>Remove readme.html file. <span class="red">Warning: you can't undo this action!</span></td>
                     <td>
                         <?php if ( file_exists( WordlessExtenderSecurity::$readme_path ) ) : ?>
                             <input type="checkbox" name="REMOVE_README" value="true"> Sure?
@@ -95,7 +91,7 @@ if ( isset( $_GET['message'] ) )
 
                 <tr>
                     <td>License</td>
-                    <td>Remove license.txt file. <span style="color:red">Warning: you can't undo this action!</span></td>
+                    <td>Remove license.txt file. <span class="red">Warning: you can't undo this action!</span></td>
                     <td>
                         <?php if ( file_exists( WordlessExtenderSecurity::$license_path ) ) : ?>
                             <input type="checkbox" name="REMOVE_LICENSE" value="true"> Sure?

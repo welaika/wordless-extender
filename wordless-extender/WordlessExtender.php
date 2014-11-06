@@ -5,11 +5,7 @@ include_once ABSPATH . 'wp-admin/includes/plugin.php';
 Class WordlessExtender {
 
 
-    public static $site_url;
-    public static $path;
-    public static $dirname;
-    public static $url;
-    public static $to_be_installed_plugins = array();
+    public static $site_url, $path, $dirname, $url, $to_be_installed_plugins = array(), $repository_url;
 
     public function __construct($path)
     {
@@ -23,6 +19,12 @@ Class WordlessExtender {
         $this->set_url();
         $this->set_to_be_installed_plugins();
         $this->set_admin_actions();
+        $this->set_repository_url();
+    }
+
+    private function set_repository_url()
+    {
+        self::$repository_url = 'https://github.com/welaika/wordless-extender/';
     }
 
     private function set_site_url()

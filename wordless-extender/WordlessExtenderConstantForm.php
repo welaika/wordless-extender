@@ -121,7 +121,11 @@ class WordlessExtenderConstantForm
         }
             $this->td( $html );
 
-        if ( !empty( $extra_controls ) ){
+        if (empty( $extra_controls ) ){
+
+            $this->td('');
+
+        }else{
 
             $this->td( $this->html_tag( $extra_controls ) );
         }

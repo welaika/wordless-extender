@@ -1,49 +1,34 @@
-<?php   
-  /* 
+<?php
+  /*
   Plugin Name: Wordless Extender
   Plugin URI: https://github.com/welaika/wordless-extender
-  Description: Wordless Extender is a starting point for every WordPress web developer. Give a list of plugin we usually install on every installation, or we need to remember to install!
+  Description: Wordless Extender is a starting point for every WordPress web developer. Give a list of plugin we usually install, edit your wp-config.php and make security fixes.
   Author: Welaika
-  Version: 0.3
-  Author URI: http://www.welaika.com
-  */  
+  Version: 1
+  Author URI: http://dev.welaika.com
+  */
 
-define("wle_SITE_URL", get_bloginfo('url'));
+// If this file is called directly, abort.
 
-include_once ABSPATH . 'wp-admin/includes/plugin.php';
 
-global $plugin_dir, $plugin_url;
-$plugin_dir = dirname(__FILE__) ."/";
-$plugin_dirname = basename($plugin_dir);
-$plugin_url = plugins_url($plugin_dirname);
+if ((defined( 'WPINC' )) && (php_sapi_name() != 'cli')) { // This will let wp-cli works
 
-require_once $plugin_dir . 'admin.php';
-require_once $plugin_dir . 'functions.php';
+    function __autoload($classname) {
+        $filename = plugin_dir_path( __FILE__ ) ."wordless-extender/". $classname .".php";
+        if (is_readable($filename))
+            include_once($filename);
+    }
 
-# A list of plugin to be displayed and checked for installation
-/*
-  Example item:
-  + if name is equal to plugin slug, put only the plugin name:
-    'Wordless' 
-  + if plugin slug is different from name, create an array:
-    array(
-      'Name' => 'InfiniteWP Client',
-      'Slug' => 'iwp-client'
-    )
+    require_once WordlessExtender::$path . 'functions.php';
 
-    Please note: array keys are KEYS SENSITIVE!
-*/
-$wle_to_be_installed_plugins = array(
-  'Wordless',
-  'users2Csv',
-  'White Label CMS', 
-  array('Name' => 'InfiniteWP Client', 'Slug' => 'iwp-client'), 
-  'Simple Fields', 
-  'Options Framework', 
-  'Posts To Posts',
-  'Debug Bar',
-  'Debug Bar Console',
-  'Debug Bar Extender',
-  'Formidable Forms',
-  'Limit Login Attempts'
-);
+    try {
+        new WordlessExtender(plugin_dir_path( __FILE__ ));
+    } catch ( Exception $e) {
+        echo $e->getMessage(), "\n";
+    }
+
+    require_once WordlessExtender::$path . 'admin.php';
+
+    $wordless_extender_security = new WordlessExtenderSecurity;
+
+}

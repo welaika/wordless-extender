@@ -131,3 +131,5 @@ if ( isset( $_GET['message'] ) )
     </form>
 
 </div>
+
+<?php include_once('footer.html.php'); ?>

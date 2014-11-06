@@ -10,6 +10,21 @@
 
         if ( WordlessExtenderDB::take('REMOVE_META_INFOS') === 'true' )
             $this->remove_meta_infos();
+
+        if ( is_array( $target = WordlessExtenderDB::take('REMOVE_DEFAULT_THEMES_AND_PLUGINS') ) )
+            $this->remove_default_themes_and_plugins( $target );
+
+        if ( WordlessExtenderDB::take('REMOVE_XMLRPC') === 'true' )
+            $this->remove_xmlrpc();
+
+        if ( WordlessExtenderDB::take('REMOVE_README') === 'true' )
+            $this->remove_readme();
+
+
+        if ( WordlessExtenderDB::take('REMOVE_LICENSE') === 'true' )
+            $this->remove_license();
+    }
+
     private function set_paths()
     {
         self::$xmlrpc_path = ABSPATH . 'xmlrpc.php';
@@ -19,6 +34,31 @@
         self::$htaccess_tpl_path = WordlessExtender::$path . 'resources/htaccess.tpl';
     }
 
+
+    private function remove_default_themes_and_plugins( $targets )
+    {
+        foreach ( $targets as $target ) {
+            WordlessExtenderFilesystem::delete( $target );
+        }
+        WordlessExtenderDB::clear('REMOVE_DEFAULT_THEMES_AND_PLUGINS');
+    }
+
+    private function remove_xmlrpc()
+    {
+        WordlessExtenderFilesystem::delete( self::$xmlrpc_path );
+        WordlessExtenderDB::clear('REMOVE_XMLRPC');
+    }
+
+    private function remove_readme()
+    {
+        WordlessExtenderFilesystem::delete( self::$readme_path );
+        WordlessExtenderDB::clear('REMOVE_README');
+    }
+
+    private function remove_license()
+    {
+        WordlessExtenderFilesystem::delete( self::$license_path );
+        WordlessExtenderDB::clear('REMOVE_LICENSE');
     }
 
     private function remove_meta_infos()

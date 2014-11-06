@@ -6,7 +6,6 @@ Class WordlessExtenderConstantCollection {
     {
         $list = array();
 
-        // $list['WP_SITEURL'] = array( 'type' => null, 'description' => '' );
         $list['AUTH_KEY'] = array( 'type' => null, 'description' => '', 'extra_controls' => self::salt_attributes('AUTH_KEY') );
         $list['SECURE_AUTH_KEY'] = array( 'type' => null, 'description' => '', 'extra_controls' => self::salt_attributes('SECURE_AUTH_KEY') );
         $list['LOGGED_IN_KEY'] = array( 'type' => null, 'description' => '', 'extra_controls' => self::salt_attributes('LOGGED_IN_KEY') );

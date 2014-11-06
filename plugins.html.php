@@ -2,8 +2,6 @@
   $pluginManager = new WordlessExtenderPluginManager(WordlessExtender::$to_be_installed_plugins);
   $pluginManager->initialize_plugins();
   $plugin_data = $pluginManager->get_plugin_istances();
-  // dump($plugin_data);
-  // $pluginManager->dump_initialized_plugin();
 
   wp_enqueue_script( 'plugin-install' );
   add_thickbox();

@@ -26,10 +26,6 @@ class WordlessExtenderConstantForm
 
     private function html_tag( $options )
     {
-        // $label = ( isset($options['label']) ) ? $options['label'] : '';
-        // $checked = ( isset($options['checked'] ) && $options['checked'] == $options['value']) ? 'checked' : '';
-        // $value = ( isset($options['value']) ) ? $options['value'] : '';
-
         $html_options = '';
         foreach ($options['attrs'] as $key => $value){
             $html_options .= "{$key}=\"{$value}\" ";
@@ -131,6 +127,5 @@ class WordlessExtenderConstantForm
         }
         $this->tr_close();
     }
-
 
 }

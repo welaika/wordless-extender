@@ -4,8 +4,8 @@
   Plugin URI: https://github.com/welaika/wordless-extender
   Description: Wordless Extender is a starting point for every WordPress web developer. Give a list of plugin we usually install on every installation, or we need to remember to install!
   Author: Welaika
-  Version: 0.3
-  Author URI: http://www.welaika.com
+  Version: 1
+  Author URI: http://dev.welaika.com
   */
 
 // If this file is called directly, abort.

@@ -24,7 +24,6 @@ Class WordlessExtenderConstantManager{
 
         if (!$this->initialized){
             $this->init();
-            // wle_show_message("Warning: database is not initialized yet! Use the init button at the bottom of the page to do it", true);
         }
 
     }
@@ -78,12 +77,6 @@ Class WordlessExtenderConstantManager{
             $this->wpconfig->write($tpl_content);
         }
 
-        // Usare qui replace_constant() della classe WordlessExetenderWpconfig
-        // per ripristinare i dati del DB ed evitare di doverlo fare a mano dal
-        // server:
-        // replace_constant( 'DB_NAME', define('DB_NAME', 'wordless');)
-        // e così via per le altre. Un po' macchinoso, ma messo in un suo metodo
-        // fa il porco lavoro con gli strumenti già a disposizione
         foreach ($constants_to_migrate_into_new_wpconfig as $c_name => $c_value ) {
             $c = new WordlessConstant( $c_name, array( 'new_value' => $c_value ) );
         }

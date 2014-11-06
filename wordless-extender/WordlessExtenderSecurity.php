@@ -20,6 +20,8 @@
         if ( WordlessExtenderDB::take('REMOVE_README') === 'true' )
             $this->remove_readme();
 
+        if ( WordlessExtenderDB::take('HARDEN_HTACCESS') === 'true' )
+            $this->harden_htaccess();
 
         if ( WordlessExtenderDB::take('REMOVE_LICENSE') === 'true' )
             $this->remove_license();
@@ -34,6 +36,17 @@
         self::$htaccess_tpl_path = WordlessExtender::$path . 'resources/htaccess.tpl';
     }
 
+    private function harden_htaccess()
+    {
+        $current = WordlessExtenderFilesystem::read_file( self::$htaccess_path );
+
+        $template = WordlessExtenderFilesystem::read_file( self::$htaccess_tpl_path );
+        $pattern = '/#\sBEGIN\swordless-extender.*#\sEND\swordless-extender/s';
+        $new_content = $template;
+        $new_content .= preg_replace( $pattern, ' ', $current );
+
+        WordlessExtenderFilesystem::backup_and_update_file( self::$htaccess_path, $new_content );
+    }
 
     private function remove_default_themes_and_plugins( $targets )
     {

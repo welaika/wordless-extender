@@ -30,6 +30,11 @@ Class WordlessExtenderDB {
 
   }
 
+  public static function clear( $name )
+  {
+    delete_option( self::translate_name( $name ) );
+  }
+
   private static function translate_name( $name )
   {
     if ( !empty($name) )
@@ -37,5 +42,6 @@ Class WordlessExtenderDB {
 
     return false;
   }
+
 
 }

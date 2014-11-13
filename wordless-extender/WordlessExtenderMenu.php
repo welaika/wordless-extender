@@ -20,7 +20,7 @@ Class WordlessExtenderMenu{
         'capability' => 'install_plugins',
         'menu_slug' => 'wordless',
         'function' => 'wle_plugin_manager',
-        'icon_url' => '/wp-content/plugins/wordless-extender/images/welaika.16x16.png', //check it
+        'icon_url' => plugins_url() . '/wordless-extender/images/welaika.16x16.png', //check it
         'position' => 59
         );
 

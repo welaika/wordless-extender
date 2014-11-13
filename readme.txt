@@ -3,15 +3,15 @@ Contributors: Welaika
 Tags: security, configuration, wordless, htaccess, wp-config, development
 Requires at least: 4.0
 Tested up to: 4.0
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: MIT
 
-Wordless Extender is a starting point for every WordPress web developer. Give a list of plugin we usually install, edit your wp-config.php and make security fixes.
+Wordless Extender is a starting point for every WordPress web developer. Commonly used plugin collection, `wp-config.php` and `.htaccess` configuration and security improvements.
 
 == Description ==
 ![logo](http://welaika.github.com/wordless/assets/images/wordless-extender.png)
 
-[Wordless](https://github.com/welaika/wordless) is the WP themes framework developed and used by [weLaika](http://dev.welaika.com).
+[Wordless](https://github.com/welaika/wordless) is the WP themes framework developed and used by [weLaika](http://dev.welaika.com) and a lot of other enthusiasts developers and contribuitors.
 
 As we wrote in the Wordless README:
 
@@ -22,20 +22,20 @@ As we wrote in the Wordless README:
 *Wordless Extender* (WLE from now on) is a starting point for every Wordless theme.
 Let\'s take a look in depth.
 
-=== Plugin Manager ===
+### Plugin Manager
 
 Never change a winning team! These are our _starred_ plugins; with these we cover the 90% of our developing needs.
 You\'ll have a control panel inside WLE to list, enable, disable and upgrade plugins from the collection; never search that useful plugin crawling the WP.org repo and have team kickstart projects with always the same plugin set.
 
-=== Config Constants ===
+### Config Constants
 
 Manage WP constants (stored in your wp-config.php) directly within the WP backend.
 
 We got inspired by WordPress [guidelines](http://codex.wordpress.org/Editing_wp-config.php) and we crafted this little control panel. It is intended for advanced users: we are not interested in making things easy, but we\'d like to remember important/complex/abstruse settings and have them always just one click away.
 
-Everytime you\'ll update these configs `wp-config.php` file will be backed-up in `wp-config.php.orig`. Keep in mind.
+Everytime you'll update these configs `wp-config.php` file will be backed-up in `wp-config.php.orig`. Keep in mind.
 
-=== Security fixes ===
+### Security fixes
 
 This is the most important section: improving security.
 Most of the tricks are directly from [Hardening Wordpress](http://codex.wordpress.org/Hardening_WordPress) guide; others are tricks discovered on battlefield.
@@ -46,11 +46,11 @@ If you are asking about the things are we doing with your `.htaccess` go read th
 Essentially we\'ll block access to various files and locations.
 We are always at work to improve this section, so if you have some tips open an issue or send a pull request.
 
-=== Wordless integration ===
+### Wordless integration
 
 WLE menu in the WP backend, will be integrated with the Wordless 0.4+ backend menu, creating _one place to rule them all!_
 
-=== Licence ===
+#### Licence
 
 (The MIT License)
 
@@ -64,10 +64,18 @@ THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 
 == Installation ==
+
 1. Install Wordless Extender either via the WordPress.org plugin directory, or by uploading the files to your server.
-2. Activate the plugin.
-3. Manage plugin settings.
+1. Activate the plugin.
+1. Manage plugin settings.
 That\'s it. You\'re ready to go!
 
 == Changelog ==
-1.0.1: First stable release
+
+= 1.0.2 =
+* First stable and wordpress.org-ready release
+
+== Upgrade Notice ==
+
+= 1.0.2 =
+* Actually nothing :)

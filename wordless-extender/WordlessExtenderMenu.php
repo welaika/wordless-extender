@@ -2,7 +2,7 @@
 
 Class WordlessExtenderMenu{
 
-    private $has_wordless_menu;
+    private $has_wordless_menu, $plugins_menu = array();
 
     private $plugins_submenu = array(
         'parent_slug' => 'wordless',
@@ -11,17 +11,6 @@ Class WordlessExtenderMenu{
         'capability' => 'install_plugins',
         'menu_slug' => 'plugin_manager',
         'function' => 'wle_plugin_manager'
-        );
-
-
-    private $plugins_menu = array(
-        'page_title' => 'Wordless Extender',
-        'menu_title' => 'Wordless Extender',
-        'capability' => 'install_plugins',
-        'menu_slug' => 'wordless',
-        'function' => 'wle_plugin_manager',
-        'icon_url' => plugins_url() . '/wordless-extender/images/welaika.16x16.png', //check it
-        'position' => 59
         );
 
     private $constants_submenu = array(
@@ -44,6 +33,16 @@ Class WordlessExtenderMenu{
 
     public function __construct($wordless_menu_presence)
     {
+        $this->plugins_menu = array(
+        'page_title' => 'Wordless Extender',
+        'menu_title' => 'Wordless Extender',
+        'capability' => 'install_plugins',
+        'menu_slug' => 'wordless',
+        'function' => 'wle_plugin_manager',
+        'icon_url' => WordlessExtender::$path,
+        'position' => 59
+        );
+
         $this->has_wordless_menu = $wordless_menu_presence;
     }
 

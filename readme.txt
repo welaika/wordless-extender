@@ -3,7 +3,7 @@ Contributors: Welaika
 Tags: security, configuration, wordless, htaccess, wp-config, development
 Requires at least: 4.0
 Tested up to: 4.0
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: MIT
 
 Wordless Extender is a starting point for every WordPress web developer. Commonly used plugin collection, `wp-config.php` and `.htaccess` configuration and security improvements.

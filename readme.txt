@@ -1,5 +1,5 @@
 === Wordless Extender ===
-Contributors: Welaika
+Contributors: welaika
 Tags: security, configuration, wordless, htaccess, wp-config, development
 Requires at least: 4.0
 Tested up to: 4.0

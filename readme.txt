@@ -66,9 +66,9 @@ THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 == Installation ==
 
 1. Install Wordless Extender either via the WordPress.org plugin directory, or by uploading the files to your server.
-1. Activate the plugin.
-1. Manage plugin settings.
-That\'s it. You\'re ready to go!
+2. Activate the plugin.
+3. Manage plugin settings.
+4. That's it. You are ready to go!
 
 == Changelog ==
 

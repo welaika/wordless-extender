@@ -46,7 +46,15 @@
     Order allow,deny
     Deny from all
   </files>
+  <files .htaccess.orig>
+    Order allow,deny
+    Deny from all
+  </files>
   <files wp-config-backup.php>
+    Order allow,deny
+    Deny from all
+  </files>
+  <files wp-config.php.orig>
     Order allow,deny
     Deny from all
   </files>

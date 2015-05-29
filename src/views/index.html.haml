@@ -6,6 +6,12 @@
     %link(href="assets/stylesheets/screen.css" media="screen" rel="stylesheet" type="text/css")
     /[if lt IE 9]
       %script(src="http://html5shiv.googlecode.com/svn/trunk/html5.js" type="text/javascript")
+    :javascript
+      window.cookieconsent_options = {
+          learnMore: 'Cookie policy (IT)',
+          link: 'https://s3-eu-west-1.amazonaws.com/welaika-website/welaika_cookie_policy.pdf'
+        }
+    %script{:src => "//s3.amazonaws.com/cc.silktide.com/cookieconsent.1.0.2.min.js"}
   %body
     %a(href="https://github.com/welaika/wordless")
       %img.github_badge(src="https://a248.e.akamai.net/assets.github.com/img/71eeaab9d563c2b3c590319b398dd35683265e85/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677261795f3664366436642e706e67")
@@ -57,13 +63,14 @@
           %a(href="http://dev.welaika.com") weLaika
 
     :javascript
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-27435267-1']);
-      _gaq.push(['_trackPageview']);
-
       (function() {
         var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-27435267-1']);
+      _gaq.push (['_gat._anonymizeIp']);
+      _gaq.push(['_trackPageview']);
+
 

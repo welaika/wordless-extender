@@ -152,10 +152,13 @@ body .page-wrapper section.sidebar {
   float: left;
 }
 /* line 81, ../../src/sass/screen.sass */
-body .page-wrapper section.sidebar h1 {
+
+h1.main-title {
   width: 100%;
   text-indent: -1000em;
   background: url('../images/wordless-extender.png?1371039607') no-repeat;
+  background-size: contain;
+  background-position: left center;
   margin-bottom: 40px;
   height: 145px;
 }

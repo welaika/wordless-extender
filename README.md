@@ -1,6 +1,6 @@
 # Wordless Extender
 
-![logo](http://welaika.github.com/wordless/assets/images/wordless-extender.png)
+![logo](http://welaika.github.com/wordless-extender/assets/images/wordless-extender.png)
 
 [Wordless](https://github.com/welaika/wordless) is the WP themes framework developed and used by [weLaika](http://dev.welaika.com).
 
@@ -40,6 +40,9 @@ We are always at work to improve this section, so if you have some tips open an 
 ## Wordless integration
 
 WLE menu in the WP backend, will be integrated with the Wordless 0.4+ backend menu, creating _one place to rule them all!_
+
+## Need more tools?
+Visit [Wordpress Tools](http://wptools.it).
 
 ## Licence
 

@@ -79,10 +79,10 @@ Class WordlessExtender {
     {
         $pluginlist = array(
             'Wordless',
-            'users2Csv',
-            array('Name' => 'InfiniteWP Client', 'Slug' => 'iwp-client'),
+            'Users to Csv',
+            array('Name' => 'InfiniteWP - Client', 'Slug' => 'iwp-client'),
             'Advanced Custom Fields',
-            array('Name' => 'Advanced Custom Fields Date-Time Picker', 'Slug' => 'acf-field-date-time-picker'),
+            array('Name' => 'Advanced Custom Fields: Date and Time Picker', 'Slug' => 'acf-field-date-time-picker'),
             'Debug Bar',
             'Debug Bar Console',
             'Debug Bar Extender',

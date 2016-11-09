@@ -15,11 +15,11 @@ License: MIT
 
 if ((defined( 'WPINC' )) && (php_sapi_name() != 'cli')) { // This will let wp-cli works
 
-    function __autoload($classname) {
+    spl_autoload_register(function ($classname) {
         $filename = plugin_dir_path( __FILE__ ) ."wordless-extender/". $classname .".php";
         if (is_readable($filename))
             include_once($filename);
-    }
+    });
 
     require_once WordlessExtender::$path . 'functions.php';
 

@@ -54,6 +54,8 @@ if ( isset( $_GET['message'] ) )
                         $tw12 = ( !file_exists( WP_CONTENT_DIR .'/themes/twentytwelve' ) ) ? 'disabled' : '';
                         $tw13 = ( !file_exists( WP_CONTENT_DIR .'/themes/twentyrhirteen' ) ) ? 'disabled' : '';
                         $tw14 = ( !file_exists( WP_CONTENT_DIR .'/themes/twentyfourteen' ) ) ? 'disabled' : '';
+                        $tw15 = ( !file_exists( WP_CONTENT_DIR .'/themes/twentyfifteen' ) ) ? 'disabled' : '';
+                        $tw16 = ( !file_exists( WP_CONTENT_DIR .'/themes/twentysixteen' ) ) ? 'disabled' : '';
                         $hello = ( !file_exists( WP_CONTENT_DIR .'/plugins/hello.php' ) ) ? 'disabled' : '';
                         ?>
                         <input type="checkbox" name="REMOVE_DEFAULT_THEMES_AND_PLUGINS[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentyten'; ?>" <?php echo $tw10; ?>> Theme: TwentyTen<br />
@@ -61,6 +63,8 @@ if ( isset( $_GET['message'] ) )
                         <input type="checkbox" name="REMOVE_DEFAULT_THEMES_AND_PLUGINS[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentytwelve'; ?>" <?php echo $tw12; ?>> Theme: TwentyTwelve<br />
                         <input type="checkbox" name="REMOVE_DEFAULT_THEMES_AND_PLUGINS[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentythirteen'; ?>" <?php echo $tw13; ?>> Theme: TwentyThirteen<br />
                         <input type="checkbox" name="REMOVE_DEFAULT_THEMES_AND_PLUGINS[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentyfourteen'; ?>" <?php echo $tw14; ?>> Theme: TwentyFourteen<br />
+                        <input type="checkbox" name="REMOVE_DEFAULT_THEMES_AND_PLUGINS[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentyfifteen'; ?>" <?php echo $tw15; ?>> Theme: TwentyFifteen<br />
+                        <input type="checkbox" name="REMOVE_DEFAULT_THEMES_AND_PLUGINS[]" value="<?php echo WP_CONTENT_DIR .'/themes/twentysixteen'; ?>" <?php echo $tw16; ?>> Theme: TwentySixteen<br />
                         <input type="checkbox" name="REMOVE_DEFAULT_THEMES_AND_PLUGINS[]" value="<?php echo WP_CONTENT_DIR .'/plugins/hello.php'; ?>" <?php echo $hello; ?>> Plugin: Hello Dolly
                     </td>
                 </tr>

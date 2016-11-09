@@ -21,7 +21,7 @@ Class WordlessExtenderConstantCollection {
         $list['WP_POST_REVISIONS'] = array( 'type' => 'text', 'description' => 'Use an integer to set the maximum kept revisions per post' );
         $list['DISABLE_WP_CRON'] = array( 'type' => 'bool', 'description' => '' );
         $list['WP_ALLOW_REPAIR'] = array( 'type' => 'bool', 'description' => '' );
-        $list['FS_METHOD'] = array( 'type' => 'text', 'description' => 'It forces the filesystem method. It should only be "direct", "ssh2", "ftpext", or "ftpsockets". For details <a href="http://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants">view codex</a>' );
+        $list['FS_METHOD'] = array( 'type' => 'text', 'description' => 'It forces the filesystem method. It should only be "direct", "ssh2", "ftpext", or "ftpsockets". For details <a href="http://codex.wordpress.org/Editing_wp-config.php#WordPress_Upgrade_Constants" target="_blank">view codex</a>' );
 
         return $list;
     }

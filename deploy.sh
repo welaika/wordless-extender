@@ -92,7 +92,6 @@ svn delete assets/*
 echo "...and copying updated assets inside of it"
 svn copy trunk/assets/* assets/
 cd $SVNPATH/assets/
-sleep 100
 svn commit --username=$SVNUSER -m "Assets $NEWVERSION1"
 
 echo "Removing temporary directory $SVNPATH"

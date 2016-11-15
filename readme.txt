@@ -2,16 +2,15 @@
 Contributors: welaika
 Tags: security, configuration, wordless, htaccess, wp-config, development
 Requires at least: 4.0
-Tested up to: 4.0
-Stable tag: 1.0.6
+Tested up to: 4.6.1
+Stable tag: 1.0.7
 License: MIT
 
 Wordless Extender is a starting point for everyone: list of commonly used plugins, wp-config.php / .htaccess configuration and security improvements.
 
 == Description ==
-![logo](http://welaika.github.com/wordless/assets/images/wordless-extender.png)
 
-[Wordless](https://github.com/welaika/wordless) is the WP themes framework developed and used by [weLaika](http://dev.welaika.com) and a lot of other enthusiasts developers and contribuitors.
+[Wordless](https://github.com/welaika/wordless) is the WP themes framework developed and used by [weLaika](http://dev.welaika.com).
 
 As we wrote in the Wordless README:
 
@@ -20,18 +19,18 @@ As we wrote in the Wordless README:
     to get the most out of your beautiful WP developer life »
 
 *Wordless Extender* (WLE from now on) is a starting point for every Wordless theme.
-Let\'s take a look in depth.
+Let's take a look in depth.
 
 ### Plugin Manager
 
 Never change a winning team! These are our _starred_ plugins; with these we cover the 90% of our developing needs.
-You\'ll have a control panel inside WLE to list, enable, disable and upgrade plugins from the collection; never search that useful plugin crawling the WP.org repo and have team kickstart projects with always the same plugin set.
+You'll have a control panel inside WLE to list, enable, disable and upgrade plugins from the collection; never search that useful plugin crawling the WP.org repo and have team kickstart projects with always the same plugin set.
 
 ### Config Constants
 
 Manage WP constants (stored in your wp-config.php) directly within the WP backend.
 
-We got inspired by WordPress [guidelines](http://codex.wordpress.org/Editing_wp-config.php) and we crafted this little control panel. It is intended for advanced users: we are not interested in making things easy, but we\'d like to remember important/complex/abstruse settings and have them always just one click away.
+We got inspired by WordPress [guidelines](http://codex.wordpress.org/Editing_wp-config.php) and we crafted this little control panel. It is intended for advanced users: we are not interested in making things easy, but we'd like to remember important/complex/abstruse settings and have them always just one click away.
 
 Everytime you'll update these configs `wp-config.php` file will be backed-up in `wp-config.php.orig`. Keep in mind.
 
@@ -40,17 +39,20 @@ Everytime you'll update these configs `wp-config.php` file will be backed-up in 
 This is the most important section: improving security.
 Most of the tricks are directly from [Hardening Wordpress](http://codex.wordpress.org/Hardening_WordPress) guide; others are tricks discovered on battlefield.
 
-You have to know what you are doing. Follow the comments in the panel if you are confused. Remind that when you\'ll let the plugin rewrite your `.htaccess` file, it will take a backup copy of the last version in `.htaccess.orig`.
+You have to know what you are doing. Follow the comments in the panel if you are confused. Remind that when you'll let the plugin rewrite your `.htaccess` file, it will take a backup copy of the last version in `.htaccess.orig`.
 
 If you are asking about the things are we doing with your `.htaccess` go read the template in `resources/htaccess.tpl`.
-Essentially we\'ll block access to various files and locations.
+Essentially we'll block access to various files and locations.
 We are always at work to improve this section, so if you have some tips open an issue or send a pull request.
 
-### Wordless integration
+## Wordless integration
 
 WLE menu in the WP backend, will be integrated with the Wordless 0.4+ backend menu, creating _one place to rule them all!_
 
-#### Licence
+## Need more tools?
+Visit [Wordpress Tools](http://wptools.it).
+
+## Licence
 
 (The MIT License)
 
@@ -71,6 +73,12 @@ THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 4. That's it. You are ready to go!
 
 == Changelog ==
+
+= 1.0.7 =
+* update plugins names in plugin manager section
+* fix rrmdir function call
+* add 2015 and 2016 themes remover to security-fixes options
+* updated deprecated autoload method - and so fix on latest WP with latest PHP
 
 = 1.0.6 =
 * Update documentation

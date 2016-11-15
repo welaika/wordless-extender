@@ -9,6 +9,7 @@ PLUGINSLUG=${PWD##*/} # returns basename of current directory
 CURRENTDIR=`pwd`
 MAINFILE="wordless-extender.php" # this should be the name of your main php file in the wordpress plugin
 SVNUSER="welaika" # your svn username (case sensitive)
+CURRENT_GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
 # git config
 GITPATH="$CURRENTDIR/" # this file should be in the base of your git repository
@@ -19,11 +20,11 @@ SVNURL="http://plugins.svn.wordpress.org/$PLUGINSLUG" # Remote SVN repo on wordp
 
 # Let's begin...
 echo ".........................................."
-echo 
+echo
 echo "Preparing to deploy WordPress plugin"
-echo 
+echo
 echo ".........................................."
-echo 
+echo
 
 # Check version in readme.txt is the same as plugin file
 NEWVERSION1=`grep "^Stable tag" "$GITPATH/readme.txt" | awk -F' ' '{print $3}' | sed 's/[[:space:]]//g'`
@@ -34,6 +35,11 @@ echo "$MAINFILE version: $NEWVERSION2"
 if [ "$NEWVERSION1" != "$NEWVERSION2" ]; then echo "Versions don't match. Exiting...."; exit 1; fi
 
 echo "Versions match in readme.txt and PHP file. Let's proceed..."
+
+if [ 'master' != $CURRENT_GIT_BRANCH ]; then
+    echo "Please do the deploy from your master branch. Exiting...."
+    exit 1
+fi
 
 cd "$GITPATH"
 echo -e "Enter a commit message for this new version: \c"
@@ -47,7 +53,7 @@ echo "Pushing latest commit to origin, with tags"
 git push origin master
 git push origin master --tags
 
-echo 
+echo
 echo "Creating local copy of SVN repo ..."
 svn co $SVNURL $SVNPATH
 
@@ -79,8 +85,14 @@ svn commit --username=$SVNUSER -m "Tag $NEWVERSION1"
 
 echo "Coping assets"
 cd $SVNPATH
-svn copy trunk/assets/ assets/
+
+echo "Clearing assets from the SVN directory..."
+svn delete assets/*
+
+echo "...and copying updated assets inside of it"
+svn copy trunk/assets/* assets/
 cd $SVNPATH/assets/
+sleep 100
 svn commit --username=$SVNUSER -m "Assets $NEWVERSION1"
 
 echo "Removing temporary directory $SVNPATH"

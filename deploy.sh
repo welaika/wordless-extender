@@ -80,6 +80,9 @@ svn commit --username=$SVNUSER -m "$COMMITMSG"
 echo "Creating new SVN tag & committing it"
 cd $SVNPATH
 svn copy trunk/ tags/$NEWVERSION1/
+# Remove trunk directories from tag directory
+svn delete --force --quiet $SVNPATH/tags/$NEWVERSION2/trunk
+
 cd $SVNPATH/tags/$NEWVERSION1
 svn commit --username=$SVNUSER -m "Tag $NEWVERSION1"
 

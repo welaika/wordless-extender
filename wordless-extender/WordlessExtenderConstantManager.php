@@ -203,12 +203,34 @@ Class WordlessConstant{
 
     private function set_to_be_updated()
     {
+        #check is performed between the wp-config.php.orig and persistent data in DB and between the NEW wp-config.php and persistent data in DB.
         if ( !$this->presence_in_db ){
             $this->to_be_updated = true;
             return;
         }
+        $orig_db_check = ($this->value === $this->new_value) ? false : true;
 
-        $this->to_be_updated = ($this->value === $this->new_value) ? false : true;
+        $wle_definition = $this->get_wpconfig_by_name();
+        $pattern = $this->build_wle_pattern_by_name();
+
+        preg_match($pattern, $wle_definition, $matches);
+
+        if ( !$orig_db_check && !empty($matches[1]) ) {
+            $this->to_be_updated = ($this->value === $matches[1]) ? false : true;
+        }
+        else {
+            $this->to_be_updated = $orig_db_check;
+        }
+    }
+
+    private function get_wpconfig_by_name()
+    {
+        return trim(preg_replace('/\s+/', ' ', $this->wpconfig->search("WLE_".$this->name)));
+    }
+
+    private function build_wle_pattern_by_name()
+    {
+        return '/^#WLE_'.$this->name.' define\(\''.$this->name.'\', \'(.*)\'\); #END_WLE_'.$this->name.'$/ms';
     }
 
     public function get_value()

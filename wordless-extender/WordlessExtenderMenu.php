@@ -2,16 +2,16 @@
 
 Class WordlessExtenderMenu{
 
-    private $has_wordless_menu, $plugins_menu = array();
+    private $has_wordless_menu, $constants_menu = array();
 
-    private $plugins_submenu = array(
-        'parent_slug' => 'wordless',
-        'page_title' => 'Plugin Manager',
-        'menu_title' => 'Plugin Manager',
-        'capability' => 'install_plugins',
-        'menu_slug' => 'plugin_manager',
-        'function' => 'wle_plugin_manager'
-        );
+    // private $plugins_submenu = array(
+    //     'parent_slug' => 'wordless',
+    //     'page_title' => 'Plugin Manager',
+    //     'menu_title' => 'Plugin Manager',
+    //     'capability' => 'install_plugins',
+    //     'menu_slug' => 'plugin_manager',
+    //     'function' => 'wle_plugin_manager'
+    //     );
 
     private $constants_submenu = array(
         'parent_slug' => 'wordless',
@@ -33,12 +33,12 @@ Class WordlessExtenderMenu{
 
     public function __construct($wordless_menu_presence)
     {
-        $this->plugins_menu = array(
+        $this->constants_menu = array(
         'page_title' => 'Wordless Extender',
         'menu_title' => 'Wordless Extender',
         'capability' => 'install_plugins',
         'menu_slug' => 'wordless',
-        'function' => 'wle_plugin_manager',
+        'function' => 'wle_constants',
         'icon_url' => WordlessExtender::$path,
         'position' => 59
         );
@@ -74,12 +74,12 @@ Class WordlessExtenderMenu{
     public function create_menus()
     {
         if ($this->has_wordless_menu){
-            $this->create_submenu($this->plugins_submenu);
+            // $this->create_submenu($this->plugins_submenu);
             $this->create_submenu($this->constants_submenu);
             $this->create_submenu($this->fixes_submenu);
         } else {
-            $this->create_menu($this->plugins_menu);
-            $this->create_submenu($this->constants_submenu);
+            $this->create_menu($this->constants_menu);
+            // $this->create_submenu($this->constants_submenu);
             $this->create_submenu($this->fixes_submenu);
         }
     }

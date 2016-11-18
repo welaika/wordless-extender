@@ -5,10 +5,10 @@
  */
 
 // Plugin Manager
-function wle_plugin_manager() {
-  // include HTML template
-  include "plugins.html.php";
-}
+// function wle_plugin_manager() {
+//   // include HTML template
+//   include "plugins.html.php";
+// }
 
 function wle_constants() {
   // include HTML template

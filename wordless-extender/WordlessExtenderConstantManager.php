@@ -62,7 +62,7 @@ Class WordlessExtenderConstantManager{
 
     private function init_wpconfig()
     {
-        $tpl_content = $this->wpconfig->get_tpl();
+        $tpl_content = $this->get_tpl_with_table_prefix_synched();
         $orig = $this->wpconfig->read();
 
         $constants_to_migrate_into_new_wpconfig = array(
@@ -81,6 +81,12 @@ Class WordlessExtenderConstantManager{
             $c = new WordlessConstant( $c_name, array( 'new_value' => $c_value ) );
         }
      }
+
+    private function get_tpl_with_table_prefix_synched()
+    {
+        global $wpdb;
+        return preg_replace('/table_prefix  = \'wp_\';/', 'table_prefix  = \''.$wpdb->base_prefix.'\';', $this->wpconfig->get_tpl());
+    }
 
     private function init()
     {

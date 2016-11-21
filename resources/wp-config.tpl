@@ -69,7 +69,7 @@ define('NONCE_SALT', '');
 $table_prefix  = 'wp_';
 
 #WLE_WP_DEBUG
-define('WP_DEBUG', true);
+define('WP_DEBUG', false);
 #END_WLE_WP_DEBUG
 
 #WLE_DISALLOW_FILE_EDIT

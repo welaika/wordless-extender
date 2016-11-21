@@ -73,7 +73,7 @@ Class WordlessExtenderConstantManager{
         );
 
         if ($tpl_content){
-            $this->wpconfig->write($orig, ABSPATH . 'wp-config.php.orig');
+            $this->wpconfig->write($orig, ABSPATH . 'wp-config.php.'.time().'.orig');
             $this->wpconfig->write($tpl_content);
         }
 

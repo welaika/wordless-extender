@@ -13,11 +13,6 @@ As we wrote in the Wordless README:
 *Wordless Extender* (WLE from now on) is a starting point for every Wordless theme.
 Let's take a look in depth.
 
-### Plugin Manager
-
-Never change a winning team! These are our _starred_ plugins; with these we cover the 90% of our developing needs.
-You'll have a control panel inside WLE to list, enable, disable and upgrade plugins from the collection; never search that useful plugin crawling the WP.org repo and have team kickstart projects with always the same plugin set.
-
 ### Config Constants
 
 Manage WP constants (stored in your wp-config.php) directly within the WP backend.

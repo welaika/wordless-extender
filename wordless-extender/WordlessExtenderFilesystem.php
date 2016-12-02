@@ -33,7 +33,7 @@ Class WordlessExtenderFilesystem{
 
     public static function backup_file( $file )
     {
-        file_put_contents( "{$file}.orig", file_get_contents($file) );
+        file_put_contents( $file.'.'.time().'.orig', file_get_contents($file) );
     }
 
     public static function update_file( $file, $new_content )

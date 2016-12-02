@@ -42,10 +42,14 @@
 
         $template = WordlessExtenderFilesystem::read_file( self::$htaccess_tpl_path );
         $pattern = '/#\sBEGIN\swordless-extender.*#\sEND\swordless-extender/s';
-        $new_content = $template;
-        $new_content .= preg_replace( $pattern, ' ', $current );
 
-        WordlessExtenderFilesystem::backup_and_update_file( self::$htaccess_path, $new_content );
+        preg_match($pattern, $current, $matches);
+        if ( count($matches) <= 0 ) {
+            $new_content = $template;
+            $new_content .= preg_replace( $pattern, ' ', $current );
+
+            WordlessExtenderFilesystem::backup_and_update_file( self::$htaccess_path, $new_content );
+        }
     }
 
     private function remove_default_themes_and_plugins( $targets )

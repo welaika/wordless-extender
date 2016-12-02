@@ -4,9 +4,12 @@
 
     public static $xmlrpc_path, $readme_path, $htaccess_path, $htaccess_tpl_path, $license_path;
 
+    public static $current_htaccess, $htaccess_pattern;
+
     public function __construct()
     {
         $this->set_paths();
+        $this->set_htaccess_contents();
 
         if ( WordlessExtenderDB::take('REMOVE_META_INFOS') === 'true' )
             $this->remove_meta_infos();
@@ -20,7 +23,7 @@
         if ( WordlessExtenderDB::take('REMOVE_README') === 'true' )
             $this->remove_readme();
 
-        if ( WordlessExtenderDB::take('HARDEN_HTACCESS') === 'true' )
+        if (( WordlessExtenderDB::take('HARDEN_HTACCESS') === 'true' ) && $this->wle_htaccess_check())
             $this->harden_htaccess();
 
         if ( WordlessExtenderDB::take('REMOVE_LICENSE') === 'true' )
@@ -36,20 +39,27 @@
         self::$htaccess_tpl_path = WordlessExtender::$path . 'resources/htaccess.tpl';
     }
 
+    private function set_htaccess_contents()
+    {
+        self::$current_htaccess = WordlessExtenderFilesystem::read_file( self::$htaccess_path );
+        self::$htaccess_pattern = '/#\sBEGIN\swordless-extender.*#\sEND\swordless-extender/s';
+    }
+
+    private function wle_htaccess_check()
+    {
+        preg_match(self::$htaccess_pattern, self::$current_htaccess, $matches);
+        if ( count($matches) > 0 ) {
+            return false;
+        }
+        return true;
+    }
+
     private function harden_htaccess()
     {
-        $current = WordlessExtenderFilesystem::read_file( self::$htaccess_path );
+        $new_content = WordlessExtenderFilesystem::read_file( self::$htaccess_tpl_path );
+        $new_content .= preg_replace( self::$htaccess_pattern, ' ', self::$current_htaccess );
 
-        $template = WordlessExtenderFilesystem::read_file( self::$htaccess_tpl_path );
-        $pattern = '/#\sBEGIN\swordless-extender.*#\sEND\swordless-extender/s';
-
-        preg_match($pattern, $current, $matches);
-        if ( count($matches) <= 0 ) {
-            $new_content = $template;
-            $new_content .= preg_replace( $pattern, ' ', $current );
-
-            WordlessExtenderFilesystem::backup_and_update_file( self::$htaccess_path, $new_content );
-        }
+        WordlessExtenderFilesystem::backup_and_update_file( self::$htaccess_path, $new_content );
     }
 
     private function remove_default_themes_and_plugins( $targets )

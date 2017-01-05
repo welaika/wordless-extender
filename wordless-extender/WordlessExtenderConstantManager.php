@@ -187,12 +187,18 @@ Class WordlessConstant{
     {
         if ( !empty( $new_value ) && !is_null($new_value) )
             $v = $new_value;
-        elseif ( isset( $_POST[$this->name] ) && !empty( $_POST[$this->name] ) && !is_null($_POST[$this->name]) )
-            $v = $_POST[$this->name];
+        elseif ( isset( $_POST[$this->name] ) && !is_null($_POST[$this->name]) )
+            // 'EMPTY_TRASH_DAYS' and 'WP_POST_REVISIONS' are numeric field. This type of field can't be empty
+            if ( empty( $_POST[$this->name] ) && ( in_array( $this->name, array('EMPTY_TRASH_DAYS', 'WP_POST_REVISIONS') ) ) )
+                $v_for_number = '0';
+            else
+                $v = $_POST[$this->name];
         else
             $v = '';
 
-        if ( $v )
+        if ( isset( $v_for_number ) )
+            $this->new_value = $v_for_number;
+        elseif ( $v )
             $this->new_value = $v;
         else
             $this->new_value = $this->value;

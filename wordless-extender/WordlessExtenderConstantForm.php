@@ -66,6 +66,13 @@ class WordlessExtenderConstantForm
                 "value" => $constantObj->get_value(),
                 'label' => ''
             );
+        } elseif ( $inputType == 'number' ) {
+            $ret[] = array(
+                "type" => 'number',
+                "name" => $name,
+                "value" => (int)$constantObj->get_value(),
+                'label' => ''
+            );
         } elseif ( $inputType == 'bool' ) {
             $ret[] = array(
                 "type" => 'radio',

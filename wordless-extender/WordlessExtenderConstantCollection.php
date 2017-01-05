@@ -16,6 +16,7 @@ Class WordlessExtenderConstantCollection {
         $list['NONCE_SALT'] = array( 'type' => null, 'description' => '', 'extra_controls' => self::salt_attributes('NONCE_SALT') );
         $list['WP_DEBUG'] = array( 'type' => 'bool', 'description' => '' );
         $list['DISALLOW_FILE_EDIT'] = array( 'type' => 'bool', 'description' => '' );
+        $list['CONCATENATE_SCRIPTS'] = array( 'type' => 'bool', 'description' => '' );
         $list['WPLANG'] = array( 'type' => 'text', 'description' => 'Set in the format <code>it_IT</code>' );
         $list['EMPTY_TRASH_DAYS'] = array( 'type' => 'number', 'description' => 'Use an integer to set the maximum trashed contents retention in <strong>days</strong>' );
         $list['WP_POST_REVISIONS'] = array( 'type' => 'number', 'description' => 'Use an integer to set the maximum kept revisions per post' );

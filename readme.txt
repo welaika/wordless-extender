@@ -2,8 +2,8 @@
 Contributors: welaika
 Tags: security, configuration, wordless, htaccess, wp-config, development
 Requires at least: 4.0
-Tested up to: 4.6.1
-Stable tag: 1.1.3
+Tested up to: 4.7
+Stable tag: 1.2.0
 License: MIT
 
 Wordless Extender is a starting point for everyone: list of commonly used plugins, wp-config.php / .htaccess configuration and security improvements.
@@ -73,6 +73,11 @@ THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 4. That's it. You are ready to go!
 
 == Changelog ==
+
+= 1.2.0
+* update constants manager
+* add twentyseventeen theme to security-fixes options
+* minor fixes
 
 = 1.1.3
 * univocal htaccess

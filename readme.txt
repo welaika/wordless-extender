@@ -74,25 +74,25 @@ THE SOFTWARE IS PROVIDED ‘AS IS’, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 == Changelog ==
 
-= 1.2.0
+= 1.2.0 =
 * update constants manager
 * add twentyseventeen theme to security-fixes options
 * minor fixes
 
-= 1.1.3
+= 1.1.3 =
 * univocal htaccess
 
-= 1.1.2
+= 1.1.2 =
 * fix htaccess hardening
 
-= 1.1.1
+= 1.1.1 =
 * minor fixes
 
-= 1.1.0
+= 1.1.0 =
 * autoload table prefix
 * disabled: plugin manager
 
-= 1.0.8
+= 1.0.8 =
 * fix wp-config update functions
 * fix deploy script
 

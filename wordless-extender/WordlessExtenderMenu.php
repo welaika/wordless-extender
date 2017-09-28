@@ -73,15 +73,9 @@ Class WordlessExtenderMenu{
 
     public function create_menus()
     {
-        if ($this->has_wordless_menu){
-            // $this->create_submenu($this->plugins_submenu);
-            $this->create_submenu($this->constants_submenu);
-            $this->create_submenu($this->fixes_submenu);
-        } else {
-            $this->create_menu($this->constants_menu);
-            // $this->create_submenu($this->constants_submenu);
-            $this->create_submenu($this->fixes_submenu);
-        }
+        $this->create_menu($this->constants_menu);
+        // $this->create_submenu($this->constants_submenu);
+        $this->create_submenu($this->fixes_submenu);
     }
 
 }

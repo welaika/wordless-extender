@@ -2,6 +2,17 @@
 
 ![logo](http://welaika.github.com/wordless-extender/assets/images/wordless-extender.png)
 
+![unmaintained](https://img.shields.io/badge/status-unmaintained-red)
+
+> ## **⚠️ This repository has been archived and is no longer actively maintained.**
+>
+>
+> ### What this means:
+>
+> - No further updates, bug fixes, or security patches will be provided.
+> - Issues and pull requests will not be addressed.
+> - Use this code at your own risk.
+
 [Wordless](https://github.com/welaika/wordless) is the WP themes framework developed and used by [weLaika](http://dev.welaika.com).
 
 As we wrote in the Wordless README:
